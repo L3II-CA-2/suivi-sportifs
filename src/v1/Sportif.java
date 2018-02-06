@@ -4,7 +4,7 @@
 package v1;
 
 /**
- * @author kkerboit
+ * @author Kevin Kerboit
  *
  */
 public class Sportif {
