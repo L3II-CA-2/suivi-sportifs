@@ -1,4 +1,4 @@
-package v1;
+package suivisportifs.v1;
 
 public class GestionSportifs {
 
