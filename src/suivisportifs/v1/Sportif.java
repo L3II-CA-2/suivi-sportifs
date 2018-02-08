@@ -1,7 +1,7 @@
 /**
  * 
  */
-package v1;
+package suivisportifs.v1;
 
 import java.util.Date;
 import java.util.regex.*;
@@ -34,15 +34,21 @@ public class Sportif {
 		
 		Pattern pattern;
 	    Matcher matcher;
-	     
-	    pattern = Pattern.compile(pseudo);
-	    matcher = pattern.matcher("[^\\w]");
+	    Boolean res = true;
 	    
-	    while(matcher.find()) {
-            System.out.println("Erreur ! Le pseudo ne doit pas contenir d'accents ou des caractères spéciaux \n");
-            return false;
+	    pattern = Pattern.compile("[^\\w]");
+	    matcher = pattern.matcher(pseudo);
+	    
+	    if(matcher.find()){
+           res = false;
         }
 		
+	    if(res ==false) {
+	    	 System.out.println("Erreur ! Le pseudo ne doit pas contenir d'accents ou des caractères spéciaux \n");
+	         return false;
+	    }
+
+	    
 		if(pseudo.length() < 5) {
 			System.out.println("Erreur ! Le pseudo doit faire minimum 5 caractères ! \n");
 			return false;
@@ -50,6 +56,8 @@ public class Sportif {
 		
 		
 		this.pseudo = pseudo;
+		
+		System.out.println("Le pseudo est mis ! \n");
 		
 		return true;
 	}
@@ -64,21 +72,28 @@ public class Sportif {
 		
 		Pattern pattern;
 	    Matcher matcher;
-	     
-	    pattern = Pattern.compile(pseudo);
-	    matcher = pattern.matcher("");
 	    
-	    while(matcher.find()) {
-            System.out.println("Erreur ! Le Nom ne doit pas contenir de caractères spéciaux \n");
-            return false;
+	    Boolean res = true;
+	     
+	    pattern = Pattern.compile("[^a-zA-Zéèêëöôäâàïîùûü]");
+	    matcher = pattern.matcher(nom);
+	    
+	    if(matcher.find()) {
+            res = false;
         }
 		
+	    if(res ==false) {
+	    	 System.out.println("Erreur ! Le nom ne doit pas contenir de caractères spéciaux \n");
+	         return false;
+	    }
+	    
 		if(nom.length() < 2) {
 			System.out.println("Erreur ! Le nom doit faire minimum 2 caractères ! \n");
 			return false;
 		}
 		
 		this.nom = nom;
+		System.out.println("Le nom est mis ! \n");
 		return true;
 	}
 
@@ -92,21 +107,28 @@ public class Sportif {
 		
 		Pattern pattern;
 	    Matcher matcher;
-	     
-	    pattern = Pattern.compile(pseudo);
-	    matcher = pattern.matcher("[a-zA-Zéèëêùûüôö]");
 	    
-	    while(!matcher.find()) {
-            System.out.println("Erreur ! Le prenom ne doit pas contenir de caractères spéciaux \n");
-            return false;
+	    Boolean res =true;
+	     
+	    pattern = Pattern.compile("[^a-zA-Zéèêëöôäâàïîùûü]");
+	    matcher = pattern.matcher(prenom);
+	    
+	    if(matcher.find()) {
+            res = false;
         }
 		
+	    if(res ==false) {
+	    	 System.out.println("Erreur ! Le prenom ne doit pas contenir de caractères spéciaux \n");
+	         return false;
+	    }
+	    
 		if(nom.length() < 2) {
 			System.out.println("Erreur ! Le nom doit faire minimum 2 caractères ! \n");
 			return null;
 		}
 		
 		this.prenom = prenom;
+		System.out.println("Le prenom est mis ! \n");
 		return true;
 	}
 	
