@@ -2,6 +2,7 @@ package suivisportifs.v1;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,15 +13,17 @@ import java.util.Scanner;
  *
  */
 
-public class TestSportif {
+public class Liste_Sportifs {
+	
+   ArrayList<Sportif> ListeSportif = new ArrayList<Sportif>();
 
   /**
-   * Fonction main du programme de test.
+   * Fonction d'ajout d'un sportif.
    * 
    */
 
-  public static void main(String[] args) {
-    // TODO Stub de la méthode généré automatiquement
+  public Boolean ajout() {
+	  
     
     Boolean creation = false;
     Boolean creePseudo = false;
@@ -94,13 +97,12 @@ public class TestSportif {
         }
         
       }
-
+      
+      creation = true;
     }
     
     scanner.close();
-
-    
-
+    return creation;
   }
 
 }
