@@ -1,7 +1,7 @@
 /**
  * 
  */
-package v1;
+package suivisportifs.v1;
 
 import java.util.ArrayList;
 import java.util.Date;

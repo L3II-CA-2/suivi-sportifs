@@ -1,7 +1,7 @@
 /**
  * 
  */
-package v1;
+package suivisportifs.v1;
 
 /**
  * @author Kevin Kerboit
