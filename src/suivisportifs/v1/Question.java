@@ -28,7 +28,6 @@ public class Question {
   /**
    * accesseur Intitulé Question.
    */
-  
   public String getIntitule() {
       
     return this.intitule;
@@ -38,7 +37,6 @@ public class Question {
   /**
    * modificateur Intitulé Question.
    */
-  
   public void setIntitule(String itl) {
     
     this.intitule = itl;
@@ -48,7 +46,6 @@ public class Question {
   /**
    * modificateur reponseDefault Question.
    */
-  
   public void setReponseDefault(boolean reponseD) {
     this.reponseDefault = reponseD;
   }
@@ -56,7 +53,6 @@ public class Question {
   /**
    * accesseur reponseDefault Question.
    */
-  
   public boolean getReponseDefault() {
     return this.reponseDefault;
   }
