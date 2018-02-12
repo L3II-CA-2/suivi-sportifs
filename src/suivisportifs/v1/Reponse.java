@@ -4,139 +4,82 @@
 
 package suivisportifs.v1;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
- * Classe qui décrit une réponse à une question provenant
- * d'un questionnaire, et appartenant à un sportif.
+ * Classe qui décrit une liste de réponses correspondant à
+ * un questionnaire, et contenant la date de réponse.
  * @author Glen Ollivier
  *
  */
 
 public class Reponse {
-  private int id;
-  static int idMax = 0;
-  private int idQuestion;
-  private int idQuestionnaire;
-  private String pseudoSportif;
-  private int valeur;
-  
+  private ArrayList<Boolean> reponses;
+  private Date date;
+  private int size;
+
   /**
-   * Constructeur pour l'instanciation d'un objet Reponse à partir d'un identifiant de question,
-   * de questionnaire, d'un pseudo sportif et d'une valeur de reponse.
+   * Constructeur qui prend une Date en entrée.
    */
-  
-  Reponse(int idQuestion, int idQuestionnaire, String pseudoSportif, int valeur) {
+  public Reponse(int size, Date date) {
     super();
-    this.id = ++idMax;
-    this.idQuestion = idQuestion;
-    this.idQuestionnaire = idQuestionnaire;
-    this.pseudoSportif = pseudoSportif;
-    this.valeur = valeur;
+    this.date = date;
+    this.size = size;
   }
-  
+
   /**
-   * Constructeur pour l'instanciation d'un objet Reponse vide.
+   * Constructeur qui set la Date à la date du jour.
    */
-  
-  Reponse() {
+  public Reponse(int size) {
     super();
-    this.id = ++idMax;
-    this.idQuestion = 0;
-    this.idQuestionnaire = 0;
-    this.pseudoSportif = null;
-    this.valeur = 0;
+    this.date = new Date();
+    this.size = size;
+  }
+
+  /**
+   * Accesseur de la liste de reponses.
+   * @return the reponses
+   */
+  public ArrayList<Boolean> getReponses() {
+    return reponses;
+  }
+
+  /**
+   * Modificateur de la liste de reponses.
+   * @param reponses the reponses to set
+   */
+  public void setReponses(ArrayList<Boolean> reponses) {
+    this.reponses = reponses;
+  }
+
+  /**
+   * Accesseur de la date.
+   * @return the date
+   */
+  public Date getDate() {
+    return date;
+  }
+
+  /**
+   * Modificateur de la date.
+   * @param date the date to set
+   */
+  public void setDate(Date date) {
+    this.date = date;
   }
   
   /**
-   * Constructeur pour l'instanciation d'un objet Reponse à partir
-   * d'une question et d'un pseudo de sportif.
+   * Ajoute une réponse à la fin de la liste de réponses.
+   * @param reponse la reponse a ajouter
+   * @return 1 s'il n'y a pas assez de place, 0 sinon
    */
-  
-  Reponse(Question question, String pseudoSportif) {
-    super();
-    this.id = ++idMax;
-    this.idQuestion = question.getId();
-    this.idQuestionnaire = question.getIdQuestionnaire();
-    this.pseudoSportif = pseudoSportif;
-    this.valeur = question.getValeur();
-  }
-  
-  /**
-   * Accesseur de l'identifiant de la question référencée par la réponse.
-   * @return the idQuestion
-   */
-  
-  public int getIdQuestion() {
-    return idQuestion;
-  }
-  
-  /**
-   * Modificateur de l'identifiant de la question référencée par la réponse.
-   * @param idQuestion the idQuestion to set
-   */
-  
-  public void setIdQuestion(int idQuestion) {
-    this.idQuestion = idQuestion;
-  }
-  /**
-   * Accesseur de l'identifiant du questionnaire référencé par la réponse.
-   * @return the idQuestionnaire
-   */
-  
-  public int getIdQuestionnaire() {
-    return idQuestionnaire;
-  }
-  
-  /**
-   * Modificateur de l'identifiant du questionnaire référencé par la réponse.
-   * @param idQuestionnaire the idQuestionnaire to set
-   */
-  
-  public void setIdQuestionnaire(int idQuestionnaire) {
-    this.idQuestionnaire = idQuestionnaire;
-  }
-  
-  /**
-   * Accesseur du pseudo du sportif référencé par la réponse.
-   * @return the pseudoSportif
-   */
-  
-  public String getpseudoSportif() {
-    return pseudoSportif;
-  }
-  
-  /**
-   * Modificateur du pseudo du sportif référencé par la réponse.
-   * @param pseudoSportif the pseudoSportif to set
-   */
-  
-  public void setpseudoSportif(String pseudoSportif) {
-    this.pseudoSportif = pseudoSportif;
-  }
-  
-  /**
-   * Accesseur de la valeur de la réponse.
-   * @return the valeur
-   */
-  
-  public int getvaleur() {
-    return valeur;
-  }
-  
-  /**
-   * Modificateur de la valeur de la réponse.
-   * @param valeur the valeur to set
-   */
-  
-  public void setvaleur(int valeur) {
-    this.valeur = valeur;
-  }
-  
-  /**
-   * Accesseur de l'identifiant de la réponse.
-   * @return l'identifiant de la reponse
-   */
-  
-  public int getid() {
-    return id;
+  public int add(Boolean reponse) {
+    if (this.size > reponses.size()) {
+      this.reponses.add(reponse);
+      return 0;
+    } else {
+      return 1;
+    }
   }
 }
