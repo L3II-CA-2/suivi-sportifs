@@ -44,7 +44,7 @@ public class ListeReponse {
   
   /**
    * Modificateur du sportif.
-   * @param sportif le sportif a lier
+   * @param sportif le sportif a lierquestionnaire
    */
   public void setSportif(Sportif sportif) {
     this.sportif = sportif;
@@ -64,6 +64,14 @@ public class ListeReponse {
    */
   public void setQuestionnaire(Questionnaire questionnaire) {
     this.questionnaire = questionnaire;
+  }
+  
+  /**
+   * Accesseur des reponses.
+   * @return la liste de reponses
+   */
+  public ArrayList<Reponse> getReponses() {
+    return reponses;
   }
 
   /**
