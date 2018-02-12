@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  */
 
-public class Liste_Sportifs {
+public class ListeSportifs {
 	
    ArrayList<Sportif> ListeSportif = new ArrayList<Sportif>();
 
