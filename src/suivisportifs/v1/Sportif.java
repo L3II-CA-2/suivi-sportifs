@@ -15,18 +15,20 @@ public class Sportif {
   private String nom;
   private String prenom;
   private Date datedenaissance;
-  private String sport;
+  private Sport sport;
+  
+
   
   /**
    * Constructeur.
    */
   
   public Sportif() {
-    this.pseudo = null;
-    this.nom = null;
-    this.prenom = null;
+    this.pseudo = "";
+    this.nom = "";
+    this.prenom = "";
     this.datedenaissance = null;
-    this.sport = null;
+    this.sport = Sport.Null;
   }
 
   /**
@@ -174,27 +176,22 @@ public class Sportif {
   public void setDatedenaissance(Date datedenaissance) {
     this.datedenaissance = datedenaissance;
   }
-
-  /**
-   * Fonction d'accès de la variable Sport.
-   * @return
-   */
   
-  public String getSport() {
-    return sport;
-  }
-
   /**
-   * Fonction de modification de la variable Sport.
+   * Fonction d'accès à la variable sport.
    * 
    */
   
-  public void setSport(String sport) {
-    this.sport = sport;
+  public Sport getSport() {
+    return sport;
   }
   
-  
-  
-  
+  /**
+   * Fonction de modification de sport.
+   * 
+   */
+  public void setSport(Sport sport) {
+    this.sport = sport;
+  }
   
 }
