@@ -14,8 +14,7 @@ import java.util.Scanner;
  */
 
 public class ListeSportifs {
-	
-   ArrayList<Sportif> ListeSportif = new ArrayList<Sportif>();
+  ArrayList<Sportif> listeSportifs = new ArrayList<Sportif>();
 
   /**
    * Fonction d'ajout d'un sportif.
@@ -23,7 +22,6 @@ public class ListeSportifs {
    */
 
   public Boolean ajout() {
-	  
     
     Boolean creation = false;
     Boolean creePseudo = false;

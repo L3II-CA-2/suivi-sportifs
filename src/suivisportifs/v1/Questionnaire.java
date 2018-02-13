@@ -26,34 +26,29 @@ public class Questionnaire {
     this.fin = fin;
   }
 
-  /**
-   * @return the intitule
-   */
   public String getIntitule() {
     return intitule;
   }
 
   /**
+   * Modificateur de l'intitulé.
    * @param intitule the intitule to set
    */
-   int setIntitule(String intitule) {
-     Date maintenant = new Date();
-     if (this.debut.after(maintenant)) {
-       this.intitule = intitule;
-       return 0;
-     }
-     return 1;
+  int setIntitule(String intitule) {
+    Date maintenant = new Date();
+    if (this.debut.after(maintenant)) {
+      this.intitule = intitule;
+      return 0;
+    }
+    return 1;
   }
 
-  /**
-   * @return la date debut
-   */
   public Date getDebut() {
     return debut;
   }
 
   /**
-   * Permet de modfier la date de début du questionnaire
+   * Permet de modfier la date de début du questionnaire.
    * @param debut the debut to set
    */
   public int setDebut(Date debut) {
@@ -67,17 +62,15 @@ public class Questionnaire {
       }
       return 1;
     }
-  return 2;
+    return 2;
   }
 
-  /**
-   * @return the fin
-   */
   Date getFin() {
     return fin;
   }
 
   /**
+   * Modificateur de la date de fin.
    * @param fin the fin to set
    */
   public int setFin(Date fin) {
@@ -97,9 +90,9 @@ public class Questionnaire {
     return 3;
   }
 
-  /*
+  /**
    * Permet d'ajouter un instance de question à la liste de questions du questionnaire.
-   * @param Question initialisée
+   * @param question Instance de Question initialisée
    */
   public int ajouterQuestion(Question question) {
     Date maintenant = new Date();
@@ -110,7 +103,7 @@ public class Questionnaire {
     return 1;
   }
 
-  /*
+  /**
    * Permet de retirer une question.
    * @return 0 ou code erreur
    */

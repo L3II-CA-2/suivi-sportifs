@@ -1,7 +1,8 @@
 package suivisportifs.v1;
 
 import java.util.Date;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Classe Sportif : Cette classe permet de definir un sportif.
