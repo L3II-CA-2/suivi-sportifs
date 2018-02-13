@@ -15,7 +15,7 @@ public class Sportif {
   private String pseudo;
   private String nom;
   private String prenom;
-  private Date datedenaissance;
+  private Date dateDeNaissance;
   private Sport sport;
   
 
@@ -28,7 +28,7 @@ public class Sportif {
     this.pseudo = "";
     this.nom = "";
     this.prenom = "";
-    this.datedenaissance = null;
+    this.dateDeNaissance = null;
     this.sport = Sport.Null;
   }
 
@@ -165,8 +165,8 @@ public class Sportif {
    * @return
    */
 
-  public Date getDatedenaissance() {
-    return datedenaissance;
+  public Date getDateDeNaissance() {
+    return dateDeNaissance;
   }
 
   /**
@@ -174,8 +174,8 @@ public class Sportif {
    *
    */
   
-  public void setDatedenaissance(Date datedenaissance) {
-    this.datedenaissance = datedenaissance;
+  public void setDateDeNaissance(Date datedenaissance) {
+    this.dateDeNaissance = datedenaissance;
   }
   
   /**

@@ -68,8 +68,8 @@ public class ListeSportifs {
         }
         
         if (creeDdN == true) {
-          sp.setDatedenaissance(dateDeNaissance);
-          System.out.println(sp.getDatedenaissance().toString());
+          sp.setDateDeNaissance(dateDeNaissance);
+          System.out.println(sp.getDateDeNaissance().toString());
         }
         
         
@@ -96,7 +96,21 @@ public class ListeSportifs {
         
       }
       
-      creation = true;
+      for (int i = 0; i < listeSportifs.size(); i++) {
+        if ((sp.getNom().equals(listeSportifs.get(i).getNom())) 
+            && (sp.getPrenom().equals(listeSportifs.get(i).getPrenom())) 
+            && (sp.getDateDeNaissance().equals(listeSportifs.get(i).getDateDeNaissance()))) {
+          
+          System.out.print("Erreur ! ");
+          System.out.print("Il existe déja un sportif avec ce Nom, Prenom et date de naissance \n");
+          creation = false;
+        } else {
+          creation = true;
+          listeSportifs.add(sp);
+        }
+      }
+      
+      
     }
     
     scanner.close();
