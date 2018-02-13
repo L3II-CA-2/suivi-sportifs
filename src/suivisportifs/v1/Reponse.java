@@ -6,6 +6,8 @@ package suivisportifs.v1;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Classe qui décrit une liste de réponses correspondant à
@@ -36,6 +38,32 @@ public class Reponse {
     this.date = new Date();
     this.size = size;
   }
+  
+  /**
+   * Constructeur qui prend une Date et une List de Boolean en entrée.
+   */
+  public Reponse(Date date, List<Boolean> reponses) {
+    super();
+    this.date = date;
+    this.size = reponses.size();
+    Iterator<Boolean> i = reponses.iterator();
+    while (i.hasNext()) {
+      this.add(i.next());
+    }
+  }
+
+  /**
+   * Constructeur qui set la Date à la date du jour et qui prend une List de Boolean en entrée.
+   */
+  public Reponse(List<Boolean> reponses) {
+    super();
+    this.date = new Date();
+    this.size = reponses.size();
+    Iterator<Boolean> i = reponses.iterator();
+    while (i.hasNext()) {
+      this.add(i.next());
+    }
+  }
 
   /**
    * Accesseur de la liste de reponses.
@@ -43,14 +71,6 @@ public class Reponse {
    */
   public ArrayList<Boolean> getReponses() {
     return reponses;
-  }
-
-  /**
-   * Modificateur de la liste de reponses.
-   * @param reponses the reponses to set
-   */
-  public void setReponses(ArrayList<Boolean> reponses) {
-    this.reponses = reponses;
   }
 
   /**
@@ -76,7 +96,7 @@ public class Reponse {
    */
   public int add(Boolean reponse) {
     if (this.size > reponses.size()) {
-      this.reponses.add(reponse);
+      this.reponses.add(new Boolean(reponse.booleanValue()));
       return 0;
     } else {
       return 1;
