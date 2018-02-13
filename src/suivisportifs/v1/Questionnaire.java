@@ -34,7 +34,7 @@ public class Questionnaire {
    * Modificateur de l'intitulé.
    * @param intitule the intitule to set
    */
-  int setIntitule(String intitule) {
+  public int setIntitule(String intitule) {
     Date maintenant = new Date();
     if (this.debut.after(maintenant)) {
       this.intitule = intitule;
@@ -65,7 +65,7 @@ public class Questionnaire {
     return 2;
   }
 
-  Date getFin() {
+  public Date getFin() {
     return fin;
   }
 
