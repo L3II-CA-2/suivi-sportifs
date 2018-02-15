@@ -106,6 +106,7 @@ public class ListeSportifs {
       
       if (verifDoublon(sp) == true) {
         creation = true;
+        sp.setActif(true);
         listeSportifs.add(sp);
       } else {
         creation = false;
@@ -161,6 +162,11 @@ public class ListeSportifs {
     } 
     
     return false;
+  }
+  
+  public Boolean modifActif(int index, Boolean actif) {
+    listeSportifs.get(index).setActif(actif);
+    return true;
   }
   
   private Boolean verifDoublon(Sportif sp) {
