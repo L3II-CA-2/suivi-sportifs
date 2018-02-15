@@ -97,17 +97,18 @@ public class ListeSportifs {
       }
       
       for (int i = 0; i < listeSportifs.size(); i++) {
-        if ((sp.getNom().equals(listeSportifs.get(i).getNom())) 
-            && (sp.getPrenom().equals(listeSportifs.get(i).getPrenom())) 
-            && (sp.getDateDeNaissance().equals(listeSportifs.get(i).getDateDeNaissance()))) {
-          
+        if (sp.getPseudo().equals(listeSportifs.get(i).getPseudo())) {
           System.out.print("Erreur ! ");
-          System.out.print("Il existe déja un sportif avec ce Nom, Prenom et date de naissance \n");
+          System.out.print("Il existe déja un sportif avec ce pseudo \n");
           creation = false;
-        } else {
-          creation = true;
-          listeSportifs.add(sp);
         }
+      }
+      
+      if (verifDoublon(sp) == true) {
+        creation = true;
+        listeSportifs.add(sp);
+      } else {
+        creation = false;
       }
       
       
@@ -116,5 +117,65 @@ public class ListeSportifs {
     scanner.close();
     return creation;
   }
+  
+  /**
+   * Fonction de modification du nom d'un Sportif.
+   */
+  
+  public Boolean modifierNom(int index, String nouvNom) {
+    Sportif sp = listeSportifs.get(index);
+    sp.setNom(nouvNom);
+    if (verifDoublon(sp) == true) {
+      listeSportifs.get(index).setNom(nouvNom);
+      return true;
+    } 
+    
+    return false;
+  }
+
+  /**
+   * Fonction de modification du prenom d'un Sportif.
+   */
+  
+  public Boolean modifierPrenom(int index, String nouvPrenom) {
+    Sportif sp = listeSportifs.get(index);
+    sp.setPrenom(nouvPrenom);
+    if (verifDoublon(sp) == true) {
+      listeSportifs.get(index).setPrenom(nouvPrenom);
+      return true;
+    } 
+    
+    return false;
+  }
+  
+  /**
+   * Fonction de modification de la date de naissance d'un Sportif.
+   */
+  
+  public Boolean modifierDateDeNaissance(int index, Date nouvddn) {
+    Sportif sp = listeSportifs.get(index);
+    sp.setDateDeNaissance(nouvddn);
+    if (verifDoublon(sp) == true) {
+      listeSportifs.get(index).setDateDeNaissance(nouvddn);
+      return true;
+    } 
+    
+    return false;
+  }
+  
+  private Boolean verifDoublon(Sportif sp) {
+    for (int i = 0; i < listeSportifs.size(); i++) {
+      if ((sp.getNom().equals(listeSportifs.get(i).getNom())) 
+          && (sp.getPrenom().equals(listeSportifs.get(i).getPrenom())) 
+          && (sp.getDateDeNaissance().equals(listeSportifs.get(i).getDateDeNaissance()))) {
+        
+        System.out.print("Erreur ! ");
+        System.out.print("Il existe déja un sportif avec ce Nom, Prenom et date de naissance \n");
+        return false;
+      }
+    }
+    return true;
+  }
+  
 
 }
