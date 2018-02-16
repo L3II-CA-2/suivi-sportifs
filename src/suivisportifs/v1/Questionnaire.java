@@ -110,12 +110,12 @@ public class Questionnaire {
   public int retirerQuestion(int index) {
     Date maintenant = new Date();
     if (this.debut.after(maintenant)) {
-      try {
+      if (this.questions.size() > index + 1) {
         @SuppressWarnings("unused") // La question est retirée mais n'est pas utile par la suite.
         Question questionSupprimee;
         questionSupprimee = this.questions.remove(index);
         return 0;
-      } catch (IndexOutOfBoundsException e) {
+      } else {
         return 1;
       }
     }
