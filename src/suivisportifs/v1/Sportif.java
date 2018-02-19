@@ -17,6 +17,7 @@ public class Sportif {
   private String prenom;
   private Date dateDeNaissance;
   private Sport sport;
+  private Boolean actif;
   
 
   
@@ -194,5 +195,15 @@ public class Sportif {
   public void setSport(Sport sport) {
     this.sport = sport;
   }
+
+  public Boolean getActif() {
+    return actif;
+  }
+
+  public void setActif(Boolean actif) {
+    this.actif = actif;
+  }
+  
+  
   
 }
