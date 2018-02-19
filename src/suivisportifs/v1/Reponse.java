@@ -102,4 +102,50 @@ public class Reponse {
       return 1;
     }
   }
+  
+  /**
+   * Echange les elements r1 et e2 dan sla liste de Booleans.
+   * @param r1 l'indice du 1er element
+   * @param r2 l'indice du deuxieme element
+   */
+  public void swap(int r1, int r2) {
+    if (r1 >= reponses.size()) {
+      r1 = reponses.size() - 1;
+    }
+    if (r1 < 0) {
+      r1 = 0;
+    }
+    if (r2 >= reponses.size()) {
+      r2 = reponses.size() - 1;
+    }
+    if (r2 < 0) {
+      r2 = 0;
+    }
+    if (r1 == r2) {
+      return;
+    }
+    Boolean tmp;
+    tmp = reponses.get(r1);
+    reponses.set(r1, reponses.get(r2));
+    reponses.set(r2, tmp);
+    return;
+  }
+
+  /**
+   * Remonte le Boolean à l'indice r dans la liste des reponses.
+   * @param r l'indice de l'element a monter
+   */
+  public void up(int r) {
+    this.swap(r, r - 1);
+    return;
+  }
+
+  /**
+   * Descend le Boolean à l'indice r dans la liste des reponses.
+   * @param r l'indice de l'element a descendre
+   */
+  public void down(int r) {
+    this.swap(r, r + 1);
+    return;
+  }
 }
