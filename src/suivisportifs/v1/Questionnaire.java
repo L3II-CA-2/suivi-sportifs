@@ -123,10 +123,12 @@ public class Questionnaire {
   }
   
   /**
-   * Permet d'échanger la position de deux questions
+   * Permet d'échanger la position de deux questions.
    */
   public int echangerQuestions(int positionA, int positionB) {
-    if (positionA < 0 || positionB < 0 || positionA >= this.questions.size() || positionB>= this.questions.size() ) {
+    if (positionA < 0 || positionB < 0 
+        || positionA >= this.questions.size()
+        || positionB >= this.questions.size()) {
       return 1;
     } else  {
       Question bufferA = this.questions.get(positionA);
@@ -138,18 +140,18 @@ public class Questionnaire {
   }
   
   /**
-   * Permet de monter d'un cran une question dans le questionnaire
+   * Permet de monter d'un cran une question dans le questionnaire.
    * @param index
-   * @return
+   * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int monterQuestion(int index) {
     return echangerQuestions(index, index - 1);
   }
   
   /**
-   * Permet de descendre d'un cran une question dans le questionnaire
+   * Permet de descendre d'un cran une question dans le questionnaire.
    * @param index
-   * @return
+   * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int descendreQuestion(int index) {
     return echangerQuestions(index, index + 1);
