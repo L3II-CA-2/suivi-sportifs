@@ -24,7 +24,7 @@ public class Questionnaire {
     this.intitule = intitule;
     this.debut = debut;
     this.fin = fin;
-    this.qestions = new ArrayList<Question>();
+    this.questions = new ArrayList<Question>();
   }
 
   public String getIntitule() {
