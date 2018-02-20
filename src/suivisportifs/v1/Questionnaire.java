@@ -110,15 +110,75 @@ public class Questionnaire {
   public int retirerQuestion(int index) {
     Date maintenant = new Date();
     if (this.debut.after(maintenant)) {
-      try {
+      if (this.questions.size() > index + 1) {
         @SuppressWarnings("unused") // La question est retirée mais n'est pas utile par la suite.
         Question questionSupprimee;
         questionSupprimee = this.questions.remove(index);
         return 0;
-      } catch (IndexOutOfBoundsException e) {
+      } else {
         return 1;
       }
     }
     return 2;
+  }
+  
+  /**
+   * Permet d'échanger la position de deux questions.
+   */
+  public int echangerQuestions(int positionA, int positionB) {
+    if (positionA < 0 || positionB < 0 
+        || positionA >= this.questions.size()
+        || positionB >= this.questions.size()) {
+      return 1;
+    } else  {
+      Question bufferA = this.questions.get(positionA);
+      Question bufferB = this.questions.get(positionB);
+      this.questions.set(positionA, bufferB);
+      this.questions.set(positionB, bufferA);
+      return 0;
+    }
+  }
+  
+  /**
+   * Permet de monter d'un cran une question dans le questionnaire.
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int monterQuestion(int index) {
+    return echangerQuestions(index, index - 1);
+  }
+  
+  /**
+   * Permet de descendre d'un cran une question dans le questionnaire.
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int descendreQuestion(int index) {
+    return echangerQuestions(index, index + 1);
+  }
+  
+  
+  /**
+   * Permet de modifier l'intitulé d'une question
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int modifierIntituleQuestion(int index, String intitule) {
+    if (index >= 0 && index < this.questions.size()) {
+      this.questions.get(index).setIntitule(intitule);
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+  
+  /**
+   * Permet de modifier l'intitulé d'une question
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int modifierReponseDefautQuestion(int index, Boolean reponseDefaut) {
+    if (index >= 0 && index < this.questions.size()) {
+      this.questions.get(index).setReponseDefaut(reponseDefaut);
+      return 0;
+    } else {
+      return 1;
+    }
   }
 }
