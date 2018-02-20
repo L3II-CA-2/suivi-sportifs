@@ -33,6 +33,7 @@ public class Questionnaire {
   /**
    * Modificateur de l'intitulé.
    * @param intitule the intitule to set
+   * @return 0 en cas de réussite, 1 si le questionnaire à déja été envoyé aux sportifs
    */
   public int setIntitule(String intitule) {
     Date maintenant = new Date();
@@ -50,6 +51,8 @@ public class Questionnaire {
   /**
    * Permet de modfier la date de début du questionnaire.
    * @param debut the debut to set
+   * @return 0 en cas de réussite, 1 si le questionnaire à déja été envoyé aux sportifs, 
+   *     2 Si la date de début n'est pas un Lundi
    */
   public int setDebut(Date debut) {
     Date maintenant = new Date();
@@ -60,9 +63,9 @@ public class Questionnaire {
         this.debut = debut;
         return 0;
       }
-      return 1;
+      return 2;
     }
-    return 2;
+    return 1;
   }
 
   public Date getFin() {
@@ -72,10 +75,13 @@ public class Questionnaire {
   /**
    * Modificateur de la date de fin.
    * @param fin the fin to set
+   *    * @return 0 en cas de réussite, 1 si le questionnaire est déja terminé, 
+   *     2 Si la nouvelle date de fin n'est pas un Dimanche,
+   *     3 Si la nouvelle date de fin est avant la date de début
    */
   public int setFin(Date fin) {
     Date maintenant = new Date();
-    if (this.debut.after(maintenant)) {
+    if (this.fin.after(maintenant)) {
       if (fin.after(this.debut)) {
         GregorianCalendar validationDate = new GregorianCalendar();
         validationDate.setTime(fin);
@@ -83,11 +89,11 @@ public class Questionnaire {
           this.fin = fin;
           return 0;
         }
-        return 1;
+        return 2;
       }
-      return 2;
+      return 3;
     }
-    return 3;
+    return 1;
   }
 
   /**
@@ -124,6 +130,7 @@ public class Questionnaire {
   
   /**
    * Permet d'échanger la position de deux questions.
+   * 0 en cas de réussite, 1 si l'index est en dehors des bornes
    */
   public int echangerQuestions(int positionA, int positionB) {
     if (positionA < 0 || positionB < 0 
