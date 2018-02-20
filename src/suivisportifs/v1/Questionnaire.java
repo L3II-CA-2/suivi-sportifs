@@ -121,4 +121,38 @@ public class Questionnaire {
     }
     return 2;
   }
+  
+  /**
+   * Permet d'échanger la position de deux questions
+   */
+  public int echangerQuestions(int positionA, int positionB) {
+    if (positionA < 0 || positionB < 0 || positionA >= this.questions.size() || positionB>= this.questions.size() ) {
+      return 1;
+    } else  {
+      Question bufferA = this.questions.get(positionA);
+      Question bufferB = this.questions.get(positionB);
+      this.questions.set(positionA, bufferB);
+      this.questions.set(positionB, bufferA);
+      return 0;
+    }
+  }
+  
+  /**
+   * Permet de monter d'un cran une question dans le questionnaire
+   * @param index
+   * @return
+   */
+  public int monterQuestion(int index) {
+    return echangerQuestions(index, index - 1);
+  }
+  
+  /**
+   * Permet de descendre d'un cran une question dans le questionnaire
+   * @param index
+   * @return
+   */
+  public int descendreQuestion(int index) {
+    return echangerQuestions(index, index + 1);
+  }
+   
 }
