@@ -141,7 +141,6 @@ public class Questionnaire {
   
   /**
    * Permet de monter d'un cran une question dans le questionnaire.
-   * @param index
    * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int monterQuestion(int index) {
@@ -150,11 +149,36 @@ public class Questionnaire {
   
   /**
    * Permet de descendre d'un cran une question dans le questionnaire.
-   * @param index
    * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int descendreQuestion(int index) {
     return echangerQuestions(index, index + 1);
   }
-   
+  
+  
+  /**
+   * Permet de modifier l'intitulé d'une question
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int modifierIntituleQuestion(int index, String intitule) {
+    if (index >= 0 && index < this.questions.size()) {
+      this.questions.get(index).setIntitule(intitule);
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+  
+  /**
+   * Permet de modifier l'intitulé d'une question
+   * @return 0 en cas de réussite, 1 en cas d'échec
+   */
+  public int modifierReponseDefautQuestion(int index, Boolean reponseDefaut) {
+    if (index >= 0 && index < this.questions.size()) {
+      this.questions.get(index).setReponseDefaut(reponseDefaut);
+      return 0;
+    } else {
+      return 1;
+    }
+  }
 }
