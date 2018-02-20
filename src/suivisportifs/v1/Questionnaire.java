@@ -196,4 +196,31 @@ public class Questionnaire {
       return 1;
     }
   }
+  
+  /**
+   * Renvoie l'intitulé d'une question.
+   * @param index Index de la question
+   * @return Intitulé de la question ou null en cas de question inexistante
+   */
+  public String getIntituleQuestion(int index) {
+    if (index >= 0 && index < this.questions.size()) {
+      return this.questions.get(index).getIntitule();
+    } else {
+      return null;
+    }
+  }
+  
+  /**
+   * Renvoie la réponse par défaut à une question.
+   * @param index Index de la question
+   * @return Objet booeleen contenat la valeur de la réponse par défaut ou null
+   */
+  public Boolean getReponseDefautQuestion(int index) {
+    if (index >= 0 && index < this.questions.size()) {
+      return new Boolean(this.questions.get(index).getReponseDefaut());
+    } else {
+      return null;
+    }
+  }
+  
 }
