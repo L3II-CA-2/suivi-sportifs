@@ -74,8 +74,6 @@ public class Sportif {
     
     this.pseudo = pseudo;
     
-    System.out.println("Le pseudo est mis ! \n");
-    
     return true;
   }
 
@@ -116,7 +114,7 @@ public class Sportif {
     }
     
     this.nom = nom;
-    System.out.println("Le nom est mis ! \n");
+
     return true;
   }
 
@@ -151,13 +149,13 @@ public class Sportif {
       return false;
     }
       
-    if (nom.length() < 2) {
-      System.out.println("Erreur ! Le nom doit faire minimum 2 caractères ! \n");
+    if (prenom.length() < 2) {
+      System.out.println("Erreur ! Le prenom doit faire minimum 2 caractères ! \n");
       return null;
     }
     
     this.prenom = prenom;
-    System.out.println("Le prenom est mis ! \n");
+
     return true;
   }
   
