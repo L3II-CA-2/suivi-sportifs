@@ -75,7 +75,7 @@ public class Questionnaire {
   /**
    * Modificateur de la date de fin.
    * @param fin the fin to set
-   *    * @return 0 en cas de réussite, 1 si le questionnaire est déja terminé, 
+   * @return 0 en cas de réussite, 1 si le questionnaire est déja terminé, 
    *     2 Si la nouvelle date de fin n'est pas un Dimanche,
    *     3 Si la nouvelle date de fin est avant la date de début
    */
@@ -130,19 +130,25 @@ public class Questionnaire {
   
   /**
    * Permet d'échanger la position de deux questions.
-   * 0 en cas de réussite, 1 si l'index est en dehors des bornes
+   * 0 en cas de réussite, 1 si l'index est en dehors des bornes,
+   *     2 si le questionnaire a déja été envoyé aux sportifs
    */
   public int echangerQuestions(int positionA, int positionB) {
-    if (positionA < 0 || positionB < 0 
-        || positionA >= this.questions.size()
-        || positionB >= this.questions.size()) {
-      return 1;
-    } else  {
-      Question bufferA = this.questions.get(positionA);
-      Question bufferB = this.questions.get(positionB);
-      this.questions.set(positionA, bufferB);
-      this.questions.set(positionB, bufferA);
-      return 0;
+    Date maintenant = new Date();
+    if (this.debut.after(maintenant)) {
+      if (positionA < 0 || positionB < 0 
+          || positionA >= this.questions.size()
+          || positionB >= this.questions.size()) {
+        return 1;
+      } else  {
+        Question bufferA = this.questions.get(positionA);
+        Question bufferB = this.questions.get(positionB);
+        this.questions.set(positionA, bufferB);
+        this.questions.set(positionB, bufferA);
+        return 0;
+      }
+    } else {
+      return 2;
     }
   }
   
@@ -165,7 +171,8 @@ public class Questionnaire {
   
   /**
    * Permet de modifier l'intitulé d'une question.
-   * @return 0 en cas de réussite, 1 en cas d'échec
+   * 0 en cas de réussite, 1 si l'index est en dehors des bornes,
+   *     2 si le questionnaire a déja été envoyé aux sportifs
    */
   public int modifierIntituleQuestion(int index, String intitule) {
     if (index >= 0 && index < this.questions.size()) {
@@ -178,7 +185,8 @@ public class Questionnaire {
   
   /**
    * Permet de modifier la reponse par defaut à une question.
-   * @return 0 en cas de réussite, 1 en cas d'échec
+   * 0 en cas de réussite, 1 si l'index est en dehors des bornes,
+   *     2 si le questionnaire a déja été envoyé aux sportifs
    */
   public int modifierReponseDefautQuestion(int index, Boolean reponseDefaut) {
     if (index >= 0 && index < this.questions.size()) {
