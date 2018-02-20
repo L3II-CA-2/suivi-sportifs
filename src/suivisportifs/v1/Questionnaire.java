@@ -20,7 +20,7 @@ public class Questionnaire {
   private Date fin;
   private ArrayList<Question> questions;
 
-  private Questionnaire(String intitule, Date debut, Date fin) {
+  public Questionnaire(String intitule, Date debut, Date fin) {
     this.intitule = intitule;
     this.debut = debut;
     this.fin = fin;
