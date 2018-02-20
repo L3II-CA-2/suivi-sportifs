@@ -157,7 +157,7 @@ public class Questionnaire {
   
   
   /**
-   * Permet de modifier l'intitulé d'une question
+   * Permet de modifier l'intitulé d'une question.
    * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int modifierIntituleQuestion(int index, String intitule) {
@@ -170,7 +170,7 @@ public class Questionnaire {
   }
   
   /**
-   * Permet de modifier l'intitulé d'une question
+   * Permet de modifier la reponse par defaut à une question.
    * @return 0 en cas de réussite, 1 en cas d'échec
    */
   public int modifierReponseDefautQuestion(int index, Boolean reponseDefaut) {
