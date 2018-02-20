@@ -11,11 +11,11 @@ package suivisportifs.v1;
  */
 public class Question {
   private String intitule;
-  private boolean reponseDefault;
+  private boolean reponseDefaut;
 
-  Question(String inttl, boolean rdflt) {
-    this.intitule = inttl;
-    this.reponseDefault = rdflt;
+  Question(String intitule, boolean reponseDefaut) {
+    this.intitule = intitule;
+    this.reponseDefaut = reponseDefaut;
     
   }
       
@@ -29,26 +29,26 @@ public class Question {
   }
   
   /**
-   * modificateur Intitulé Question.
+   * Modificateur Intitulé Question.
    */
-  public void setIntitule(String itl) {
+  public void setIntitule(String intitule) {
     
-    this.intitule = itl;
+    this.intitule = intitule;
     
   }
   
   /**
-   * modificateur reponseDefault Question.
+   * Modificateur reponseDefault Question.
    */
-  public void setReponseDefault(boolean reponseD) {
-    this.reponseDefault = reponseD;
+  public void setReponseDefaut(boolean reponseDefaut) {
+    this.reponseDefaut = reponseDefaut;
   }
   
   /**
-   * accesseur reponseDefault Question.
+   * Accesseur reponseDefault Question.
    */
-  public boolean getReponseDefault() {
-    return this.reponseDefault;
+  public boolean getReponseDefaut() {
+    return this.reponseDefaut;
   }
 
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  */
 
-public class ListeReponse {
+public class ReponsesSportifQuestionnaire {
   private ArrayList<Reponse> reponses;
   private Sportif sportif;
   private Questionnaire questionnaire;
@@ -19,7 +19,7 @@ public class ListeReponse {
    * @param sportif le sportif
    * @param questionnaire le questionnaire
    */
-  public ListeReponse(Sportif sportif, Questionnaire questionnaire) {
+  public ReponsesSportifQuestionnaire(Sportif sportif, Questionnaire questionnaire) {
     super();
     this.sportif = sportif;
     this.questionnaire = questionnaire;
@@ -28,7 +28,7 @@ public class ListeReponse {
   /**
    * Constructeur sans parametres.
    */
-  public ListeReponse() {
+  public ReponsesSportifQuestionnaire() {
     super();
     this.sportif = null;
     this.questionnaire = null;
@@ -44,7 +44,7 @@ public class ListeReponse {
   
   /**
    * Modificateur du sportif.
-   * @param sportif le sportif a lierquestionnaire
+   * @param sportif le sportif a lier
    */
   public void setSportif(Sportif sportif) {
     this.sportif = sportif;
