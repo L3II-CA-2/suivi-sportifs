@@ -19,14 +19,23 @@ public class ListeSportifs {
    * 
    */
 
-  public Boolean ajout(String pseudo, String nom, String prenom, Sport sport, Date ddn) {
+  public Boolean ajoutDansLaListe(String pseudo, String nom, String prenom, Sport sport, Date ddn) {
     
     Boolean creation = false;
     Sportif sp = new Sportif();
     
-    sp.setPseudo(pseudo);
-    sp.setNom(nom);
-    sp.setPrenom(prenom);
+    if (sp.setPseudo(pseudo) == false) {
+      return false;
+    }
+    
+    if (sp.setNom(nom) == false) {
+      return false;
+    }
+    
+    if (sp.setPrenom(prenom) == false) {
+      return false;
+    }
+    
     sp.setSport(sport);
     sp.setDateDeNaissance(ddn);
       
@@ -38,7 +47,7 @@ public class ListeSportifs {
       }
     }
       
-    if (verifDoublon(sp) == true) {
+    if (verifDoublonSportif(sp) == true) {
       creation = true;
       sp.setActif(true);
       listeSportifs.add(sp);
@@ -53,14 +62,19 @@ public class ListeSportifs {
    * Fonction de modification du nom d'un Sportif.
    */
   
-  public Boolean modifierNom(int index, String nouvNom) {
+  public Boolean modifierNomSportif(int index, String nouvNom) {
     Sportif sp = new Sportif();
+    
     sp.setPrenom(listeSportifs.get(index).getPrenom());
     sp.setDateDeNaissance(listeSportifs.get(index).getDateDeNaissance());
-    sp.setPseudo(listeSportifs.get(index).getPseudo());
     sp.setSport(listeSportifs.get(index).getSport());
-    sp.setNom(nouvNom);
-    if (verifDoublon(sp) == true) {
+    sp.setPseudo(listeSportifs.get(index).getPseudo());
+    
+    if (sp.setNom(nouvNom) == false) {
+      return false;
+    }
+    
+    if (verifDoublonSportif(sp) == true) {
       listeSportifs.get(index).setNom(nouvNom);
       return true;
     } 
@@ -72,14 +86,17 @@ public class ListeSportifs {
    * Fonction de modification du prenom d'un Sportif.
    */
   
-  public Boolean modifierPrenom(int index, String nouvPrenom) {
+  public Boolean modifierPrenomSportif(int index, String nouvPrenom) {
     Sportif sp = new Sportif();
     sp.setNom(listeSportifs.get(index).getNom());
     sp.setDateDeNaissance(listeSportifs.get(index).getDateDeNaissance());
     sp.setPseudo(listeSportifs.get(index).getPseudo());
     sp.setSport(listeSportifs.get(index).getSport());
-    sp.setPrenom(nouvPrenom);
-    if (verifDoublon(sp) == true) {
+    
+    if (sp.setPrenom(nouvPrenom) == false) {
+      return false;
+    }
+    if (verifDoublonSportif(sp) == true) {
       listeSportifs.get(index).setPrenom(nouvPrenom);
       return true;
     } 
@@ -91,14 +108,14 @@ public class ListeSportifs {
    * Fonction de modification de la date de naissance d'un Sportif.
    */
   
-  public Boolean modifierDateDeNaissance(int index, Date nouvddn) {
+  public Boolean modifierDateDeNaissanceSportif(int index, Date nouvddn) {
     Sportif sp = new Sportif();
     sp.setNom(listeSportifs.get(index).getNom());
     sp.setPrenom(listeSportifs.get(index).getPrenom());
     sp.setPseudo(listeSportifs.get(index).getPseudo());
     sp.setSport(listeSportifs.get(index).getSport());
     sp.setDateDeNaissance(nouvddn);
-    if (verifDoublon(sp) == true) {
+    if (verifDoublonSportif(sp) == true) {
       listeSportifs.get(index).setDateDeNaissance(nouvddn);
       return true;
     } 
@@ -106,16 +123,17 @@ public class ListeSportifs {
     return false;
   }
   
-  public Boolean modifActif(int index, Boolean actif) {
+  public Boolean modifActifSportif(int index, Boolean actif) {
     listeSportifs.get(index).setActif(actif);
     return true;
   }
   
-  private Boolean verifDoublon(Sportif sp) {
+  private Boolean verifDoublonSportif(Sportif sp) {
     for (int i = 0; i < listeSportifs.size(); i++) {
       if ((sp.getNom().equals(listeSportifs.get(i).getNom())) 
           && (sp.getPrenom().equals(listeSportifs.get(i).getPrenom())) 
-          && (sp.getDateDeNaissance().equals(listeSportifs.get(i).getDateDeNaissance()))) {
+          && (sp.getDateDeNaissance().toString().equals(
+              listeSportifs.get(i).getDateDeNaissance().toString()))) {
         
         System.out.print("Erreur ! ");
         System.out.print("Il existe déja un sportif avec ce Nom, Prenom et date de naissance \n");
@@ -124,6 +142,13 @@ public class ListeSportifs {
     }
     return true;
   }
-  
+
+  public ArrayList<Sportif> getListeSportifs() {
+    return listeSportifs;
+  }
+
+  public void setListeSportifs(ArrayList<Sportif> listeSportifs) {
+    this.listeSportifs = listeSportifs;
+  }
 
 }
