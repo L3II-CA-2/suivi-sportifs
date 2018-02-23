@@ -68,3 +68,31 @@ Si elle est passée : fin de la fonction avec retour 2
 Sinon vérifie si la question existe dans l'index
 Si elle n'existe pas : fin de la fonction avec retour 1
 Sinon changement de la réponse par défaut de la question et fin de la fonction avec retour 0
+
+
+
+
+public class ListeQuestionnaires {
+  
+  private ArrayList<Questionnaire> listeQuestionnaires;
+
+
+  public int retirer(int index) {
+Vérifie si le questionnaire à l'index existe
+Si il existe, le retire. Fin de fonction retourne 0
+Si il n'existe pas, fin de fonction retourne 1
+
+  public int modifierIntituleQuestionnaire(int index, String intitule) {
+Vérifie si le questionnaire à l'index existe
+Si il existe, retourne le résultat modifierIntitule la classe questionnaire
+Si il n'existe pas, fin de fonction retourne 2
+
+  public int modifierDebutQuestionnaire( int index, Date debut) {
+Vérifie si le questionnaire à l'index existe
+Si il existe, retourne le résultat setDebut de la classe questionnaire
+Si il n'existe pas, fin de fonction retourne 4
+
+  public int modifierFinQuestionnaire( int index, Date debut) {
+Vérifie si le questionnaire à l'index existe
+Si il existe, retourne le résultat setFin de la classe questionnaire
+Si il n'existe pas, fin de fonction retourne 4
