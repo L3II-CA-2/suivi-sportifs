@@ -1,4 +1,4 @@
-
+# Questionnaires
 
 	public int setDebut(Date debut) :
 
@@ -76,6 +76,7 @@ public class ListeQuestionnaires {
   
   private ArrayList<Questionnaire> listeQuestionnaires;
 
+# ListeQuestionnaires
 
   public int retirer(int index) {
 Vérifie si le questionnaire à l'index existe
@@ -96,3 +97,30 @@ Si il n'existe pas, fin de fonction retourne 4
 Vérifie si le questionnaire à l'index existe
 Si il existe, retourne le résultat setFin de la classe questionnaire
 Si il n'existe pas, fin de fonction retourne 4
+
+
+# Plans de tests
+
+
+  public Boolean setPseudo(String pseudo) {
+ 
+
+ | | pseudo | sp.pseudo | retour |
+ |etat initial | - | null | - |
+ | | pséudo | null | false |
+ | | ps\*udo | null | false |
+ | | p | null | false |
+ | | ps | ps | true |
+ | | monpseudo | monpseudo | true |
+ | | m0nps3ud0 | m0nps3ud0 | true |
+
+
+  public Boolean setNom(String nom) {
+ 
+
+ | | nom | sp.nom | retour |
+ |etat initial | - | null | - |
+ | | Pearce | Pearce | true |
+ | | P3arce | Pearce | false |
+ | | p | Pearce | false |
+ | | ps | ps | true |
