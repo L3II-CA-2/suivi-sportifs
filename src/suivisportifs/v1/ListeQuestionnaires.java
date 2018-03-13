@@ -19,7 +19,23 @@ public class ListeQuestionnaires {
   public ListeQuestionnaires() {
     this.listeQuestionnaires = new ArrayList<Questionnaire>();
   }
-  
+
+  /**
+   * Renvoie un questionnaire.
+   * @param index Index du questionnaire voulu
+   * @return Le questionnaire ou null si il n'existe pas
+   */ 
+  public Questionnaire getQuestionnaire(int i){
+    if (i < this.listeQuestionnaires.size()) {
+	return this.listeQuestionnaires.get(i);
+    } else {
+        return null;
+    }
+  }
+
+  public int getListSize() {
+    return this.listeQuestionnaires.size();
+  }
   /**
    * Ajoute un questionnaire.
    */
