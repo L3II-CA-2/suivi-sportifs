@@ -1,5 +1,8 @@
 /bin/
-makefile
-Makefile
-.syntastic_javac_config
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+
 /target/
