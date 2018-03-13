@@ -5,6 +5,7 @@
 package suivisportifs.v1;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Gestion CRUD des Questionnaires.
@@ -72,7 +73,7 @@ public class ListeQuestionnaires {
    * @param index Index du questionnaire à modifier
    * @param fin Nouvelle date de fin du questionnaire
    * @return Le valeur  de retour de setFin si le Questionnaire existe, 4 sinon.  */
-  public int modifierDebutQuestionnaire(int index, Date fin) {
+  public int modifierFinQuestionnaire(int index, Date fin) {
     if (index >= 0 && index < this.listeQuestionnaires.size()) {
       return this.listeQuestionnaires.get(index).setFin(fin);
     } else {
