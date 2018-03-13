@@ -53,4 +53,30 @@ public class ListeQuestionnaires {
       return 2;
     }
   }
+
+  /**
+   * Permet de modifier la date de début d'un Questionnaire.
+   * @param index Index du questionnaire à modifier
+   * @param debut Nouvelle date de début du questionnaire
+   * @return Le valeur  de retour de setDebut si le Questionnaire existe, 4 sinon.  */
+  public int modifierDebutQuestionnaire(int index, Date debut) {
+    if (index >= 0 && index < this.listeQuestionnaires.size()) {
+      return this.listeQuestionnaires.get(index).setDebut(debut);
+    } else {
+      return 4;
+    }
+  }
+
+  /**
+   * Permet de modifier la date de fin d'un Questionnaire.
+   * @param index Index du questionnaire à modifier
+   * @param fin Nouvelle date de fin du questionnaire
+   * @return Le valeur  de retour de setFin si le Questionnaire existe, 4 sinon.  */
+  public int modifierDebutQuestionnaire(int index, Date fin) {
+    if (index >= 0 && index < this.listeQuestionnaires.size()) {
+      return this.listeQuestionnaires.get(index).setFin(fin);
+    } else {
+      return 4;
+    }
+  }
 }
