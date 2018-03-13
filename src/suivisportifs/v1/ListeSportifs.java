@@ -119,7 +119,6 @@ public class ListeSportifs {
       listeSportifs.get(index).setDateDeNaissance(nouvddn);
       return true;
     } 
-    
     return false;
   }
   
