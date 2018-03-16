@@ -10,12 +10,15 @@
 \title{Application de Suivi Sportif \\ Manuel d'installation}
 \maketitle
 \tableofcontents
+\paragraph{}{Afin d'être sûrs d'avoir la dernière version de GestionSportif, téléchargez là à partir de l'adresse suivante \url{https://github.com/L3II-CA-2/suivi-sportifs/tree/master/release}.}
+
 \chapter{Base de donnée}
+\section{Installation du Serveur Web}
+\paragraph{}{L'application nécéessite l'installation d'un serveur web afin de pouvoir rendre accessibles les questionnaires. Elle a été testée avec le serveur Apache disponible à l'adresse suivante: \url{https://httpd.apache.org/download.cgi#apache24}.}
 \section{Installation du Système de Gestion de Base de Donnée}
 \paragraph{}{L'application a été développée pour fonctionner avec `MariaDB 10.0.23'. Il est recommandé d'installer la même version de MariaDB ou une version ultérieure. Vous pouvez télécharger MariaDB ici: \url{https://mariadb.org} }
 \section{Installation de la base de données}
-\paragraph{}{}
-
+\paragraph{}{Afin d'installer la base de donnée, connectez-vous à MariaDb avec les identifiants créés lors de l'installation et importez le fichier `creerBaseDonnees.sql'. Pour faciuliter cette opération vous pouvez installer PHPMyAdmin disponible à l'adresse suivante :\url{https://www.phpmyadmin.net/}.}
 \chapter{GestionSportif}
 \paragraph{}{L'application utilise le `Java Runtime Environment (JRE)' disponible à l'URL suivant:  \url{https://java.com/fr/download/}.}
 \paragraph{}{Pour installer l'application il faut placer le fichier `GestionSportif.jar' à l'emplacement souhaité. Afin de démarrer le logiciel il suffit de lancer `GestionSportif.jar'.}
