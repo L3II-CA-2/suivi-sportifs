@@ -3,14 +3,43 @@ package suivisportifs.v1;
 import java.util.Date;
 import java.util.Iterator;
 
+/**
+ * Classe qui regroupe toutes les objets du modèle de données.
+ * @author Glen Ollivier
+ *
+ */
+
 public class GestionSportifs {  
   public static ListeQuestionnaires listeQuestionnaires = new ListeQuestionnaires();
   public static ListeSportifs listeSportifs = new ListeSportifs();
   public static ListeReponses listeReponses = new ListeReponses();
   
-  public static void main(String[] args) {
+  public static void main(String[] args) {/*
+    addSportif("boblegob", "bob", "legob", Sport.Tennis, new Date());
+    addSportif("arnold", "jean", "Madec", Sport.Football, new Date());
+    addSportif("Kemar", "Marc", "Lagadec", Sport.Football, new Date());
+    System.out.println(getSportif(1).getPrenom());
+    setPrenomSportif(1, "Alfred");
+    System.out.println(getSportif(1).getPrenom());
+    int index = addQuestionnaire("test", new Date(), new Date());
+    addQuestion(index, "ça va ?", true);
+    addQuestion(index, "sur ?", true);
+    System.out.println(addReponses(getSportif("Kemar"), getQuestionnaire(index)));
 
+    System.out.println(listeQuestionnaires.getListSize());
+    System.out.println(listeSportifs.getListeSportifs().size());
+    System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
+    */
   }
+  /**
+   * 
+   * @param pseudo
+   * @param nom
+   * @param prenom
+   * @param sport
+   * @param ddn
+   * @return
+   */
   public static Boolean addSportif(String pseudo, String nom, String prenom, Sport sport, Date ddn) {
     return listeSportifs.ajoutDansLaListe(pseudo, nom, prenom, sport, ddn);
   }
