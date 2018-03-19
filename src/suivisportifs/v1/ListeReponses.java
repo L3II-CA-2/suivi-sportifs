@@ -27,15 +27,18 @@ public class ListeReponses {
    *         Renvoie null s'il n'existe pas.
    */
   public ReponsesSportifQuestionnaire get(Sportif sportif, Questionnaire questionnaire) {
-    Iterator<ReponsesSportifQuestionnaire> i = reponses.iterator();
-    ReponsesSportifQuestionnaire retours;
-    while (i.hasNext()) {
-      retours = i.next();
-      if (retours.getQuestionnaire() == questionnaire && retours.getSportif() == sportif) {
-        return retours;
+    int i;
+    ReponsesSportifQuestionnaire retours = null;
+    ReponsesSportifQuestionnaire buffer;
+
+    System.out.println(reponses.size());
+    for(i = 0; i<reponses.size(); i++) {
+      buffer = reponses.get(i);
+      if (buffer.getQuestionnaire().equals(questionnaire) && buffer.getSportif().equals(sportif)) {
+        retours = buffer;
       }
     }
-    return null;
+    return retours;
   }
 
   /**
@@ -49,6 +52,7 @@ public class ListeReponses {
     ReponsesSportifQuestionnaire retours = this.get(sportif, questionnaire);
     if (retours == null) {
       retours = new ReponsesSportifQuestionnaire(sportif, questionnaire);
+      reponses.add(retours);
     }
     return retours;
   }
