@@ -14,7 +14,7 @@ accueil(quest_name, date_debut, date_fin) ::= <<
     <div class='container'>
       <article>
         <div class="formContainer" >
-          <form method="POST" >
+          <form method="POST" target="" >
             <h2>$quest_name$</h2>
             <h3>Semaine du $date_debut$ au $date_fin$</h3>
 

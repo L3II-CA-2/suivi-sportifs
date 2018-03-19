@@ -19,7 +19,7 @@ public class generationWeb {
       String result = index.render();
       System.out.println(result);
       
-      File newHtmlFile = new File("src/suivisportifs/v1/WEB/accueil.html");
+      File newHtmlFile = new File("src/suivisportifs/v1/WEB/accueil.php");
       FileUtils.writeStringToFile(newHtmlFile, result);
   }
 }
