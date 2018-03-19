@@ -10,8 +10,13 @@ import org.stringtemplate.v4.STGroupDir;
 public class generationWeb {
   @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
-      STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template", '$','$');
+    
+      int nbQuestion = 3;
+      String nomFichier;
+    
+      STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template/", '^','^');
       ST index = g.getInstanceOf("accueil");
+      
       
       index.add("quest_name", "Questionnaire d'initiation");
       index.add("date_debut", "26/02/18");
@@ -19,7 +24,27 @@ public class generationWeb {
       String result = index.render();
       System.out.println(result);
       
-      File newHtmlFile = new File("src/suivisportifs/v1/WEB/accueil.php");
-      FileUtils.writeStringToFile(newHtmlFile, result);
+      File accueilHTML = new File("/var/www/html/Suivis-sportifs/accueil.php");
+      FileUtils.writeStringToFile(accueilHTML, result);
+      
+      for(int i = 1; i < nbQuestion; i++) {
+        ST quest = g.getInstanceOf("questionnaire");
+        if(i==nbQuestion-1) {
+          nomFichier = "fin";
+        }
+        else {
+          nomFichier = "questionnaire"+(i+1);
+        }
+        
+        quest.add("nomFichier", nomFichier);
+        quest.add("num", i);
+        quest.add("quest_name", "Questionnaire d'initiation");
+        quest.add("question", "Vous allez bien ? ");
+        result = quest.render();
+        System.out.println(result);
+        
+        File questionnaire = new File("/var/www/html/Suivis-sportifs/questionnaire"+i+".php");
+        FileUtils.writeStringToFile(questionnaire, result);
+      }
   }
 }

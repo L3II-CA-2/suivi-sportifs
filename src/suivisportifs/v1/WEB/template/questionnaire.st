@@ -1,4 +1,4 @@
-accueil(quest_name, date_debut, date_fin) ::= <<
+questionnaire(quest_name, question, nomFichier, num) ::= <<
 
 <?php
 	session_start();
@@ -7,7 +7,8 @@ accueil(quest_name, date_debut, date_fin) ::= <<
 	}
 
 	if(isset($_POST['submit'])){
-		header("Location:questionnaire1.php");
+		$_SESSION['data'][^num^]=$_POST['reponse'];
+		header("Location:^nomFichier^.php");
 	}
 
  ?>
@@ -28,11 +29,22 @@ accueil(quest_name, date_debut, date_fin) ::= <<
     <div class='container'>
       <article>
         <div class="formContainer" >
-          <form method="POST" target="accueil.php" >
+          <form method="POST" target="">
             <h2>^quest_name^</h2>
-            <h3>Semaine du ^date_debut^ au ^date_fin^</h3>
+            <h3>^question^</h3>
 
-          <input type="submit" id="submit" name="submit" value="Commencer" />
+						<table>
+							<tr>
+								<td><input type="radio" name="reponse" id="reponse" value="oui" checked></td><td><h4>Oui</h4></td>
+							</tr>
+							<tr>
+								<td><input type="radio" name="reponse" id="reponse" value="non"></td><td><h4>Non</h4></td>
+							</tr>
+						</table>
+
+ 						<br />
+
+            <input type="submit" id="submit" name="submit" value="Suivant">
           </form>
         </div>
       </article>
