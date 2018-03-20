@@ -10,23 +10,19 @@ import org.stringtemplate.v4.STGroupDir;
 public class generationWeb {
   @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
+   
     
-      Questionnaire quests = GestionSportifs.getQuestionnaire(0);
-    
-      int nbQuestion = quests.getTailleQuestionnaire();
+      int nbQuestion = 3;
       String nomFichier;
       String nomFichierprec;
     
       STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template/", '^','^');
       ST index = g.getInstanceOf("accueil");
+ 
       
-      
-      String dateDebut = quests.getDebut().getDay()+"/"+quests.getDebut().getMonth()+"/"+quests.getDebut().getYear();
-      String dateFin = quests.getFin().getDay()+"/"+quests.getFin().getMonth()+"/"+quests.getFin().getYear();
-      
-      index.add("quest_name", quests.getIntitule());
-      index.add("date_debut", dateDebut);
-      index.add("date_fin", dateFin);
+      index.add("quest_name", "Test");
+      index.add("date_debut", "10/12/2017");
+      index.add("date_fin", "10/12/2018");
       
       String result = index.render();
       System.out.println(result);
@@ -53,8 +49,8 @@ public class generationWeb {
         
         quest.add("nomFichier", nomFichier);
         quest.add("num", i);
-        quest.add("quest_name", quests.getIntitule());
-        quest.add("question", quests.getQuestion(i));
+        quest.add("quest_name", "Test");
+        quest.add("question", "Comment que c'est ?");
         quest.add("prec", nomFichierprec);
         result = quest.render();
         System.out.println(result);
@@ -62,5 +58,13 @@ public class generationWeb {
         File questionnaire = new File("html/questionnaire"+i+".php");
         FileUtils.writeStringToFile(questionnaire, result, "UTF-8");
       }
+      
+      ST fin = g.getInstanceOf("fin");
+      fin.add("quest_id", 1);
+      result = fin.render();
+      System.out.println(result);
+      
+      File fichierFin = new File("html/fin.php");
+      FileUtils.writeStringToFile(fichierFin, result, "UTF-8");
   }
 }
