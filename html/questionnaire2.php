@@ -28,8 +28,8 @@
       <article>
         <div class="formContainer" >
           <form method="POST" target="">
-            <h2>Questionnaire d'initiation</h2>
-            <h3>Vous allez bien ? </h3>
+            <h2>Test</h2>
+            <h3>Comment que c'est ?</h3>
 
 						<table>
 							<tr>
