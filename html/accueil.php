@@ -27,8 +27,8 @@
       <article>
         <div class="formContainer" >
           <form method="POST" target="accueil.php" >
-            <h2>Test</h2>
-            <h3>Semaine du 10/12/2017 au 10/12/2018</h3>
+            <h2>test1 ?</h2>
+            <h3>Semaine du 4/2/118 au 0/2/118</h3>
 
           <input type="submit" id="submit" name="submit" value="Commencer" />
           </form>

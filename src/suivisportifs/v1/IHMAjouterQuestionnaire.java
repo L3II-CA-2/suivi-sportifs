@@ -3,6 +3,9 @@ package suivisportifs.v1;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,8 +27,7 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
   private JPanel ligne3 = new JPanel();
   private JPanel ligne4 = new JPanel();
   private JPanel ligne5 = new JPanel();
-  
-  
+   
   private JButton boutonRetour = new JButton("Retour");
   private JButton boutonValider = new JButton("Valider");
   
@@ -167,7 +169,24 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
    
    System.out.println(GestionSportifs.getQuestionnaire(indexQuestionnaire).toString());
    
-   
+   Statement stm = null;
+  try {
+    stm = GestionSportifs.conn.createStatement();
+  } catch (SQLException e1) {
+    // TODO Auto-generated catch block
+    e1.printStackTrace();
+  }
+  java.sql.Date dateDebut = new java.sql.Date(dateD.getTime());
+  java.sql.Date dateFin = new java.sql.Date(dateF.getTime());
+   String tousQuestionnaires= new String("INSERT INTO t_questionnaire_qtr VALUES ("+(GestionSportifs.getQuestionnaire(indexQuestionnaire).getId()+1)+" ,'"+ intitule + "' , '" + dateDebut + "', '" + dateFin + "' );");
+   ResultSet result = null;
+   // boolean returningRows = stm.execute(fullCommand); // renvoie un booleen qui dit si ça a renvoyé qqchose
+   try {
+    result = stm.executeQuery(tousQuestionnaires);
+  } catch (SQLException e1) {
+    // TODO Auto-generated catch block
+    e1.printStackTrace();
+  }
    
    this.setVisible(false); 
    Fenetre Sportif= new Fenetre();
