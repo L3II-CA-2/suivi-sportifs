@@ -221,6 +221,7 @@ public class GestionSportifs {
     return listeQuestionnaires.retirer(index);
   }
   
+  @SuppressWarnings("deprecation")
   public static void genererWeb(Questionnaire quests) throws IOException {
     int nbQuestion = quests.getTailleQuestionnaire();
     String nomFichier;
