@@ -24,6 +24,7 @@
          <h1 class="font1">Application de Suivi de Sportifs</h1>
        </div>
          <article>
+					 <h3>Vos réponse ont bien été enregistrer ! </h3>
            <?php
            echo("<h4>Login : ".$_SESSION['login']."</h4>");
             foreach ($_SESSION['data'] as $key => $value) {

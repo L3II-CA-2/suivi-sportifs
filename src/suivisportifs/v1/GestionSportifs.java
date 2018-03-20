@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.Iterator;
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.STGroup;
+import org.stringtemplate.v4.STGroupDir;
+
 
 /**
  * Classe qui regroupe toutes les objets du modèle de données.
@@ -61,7 +69,7 @@ public class GestionSportifs {
     String tousSportifs = new String("SELECT spf_pseudo, spf_nom, spf_prenom, Date_naissance, spf_actif, spr_id from t_sportifs_spf ORDER BY qst_id;");
     result = stm.executeQuery(tousSportifs);
     while(result.next()) {
-      listeSportifs.ajoutDansLaListe(result.getString(0), result.getString(1), result.getString(2), Sport.Null, result.getDate(3));
+      addSportif(result.getString(0), result.getString(1), result.getString(2), Sport.getSportByInt(result.getInt(5)), result.getDate(3));
     }
   }
   /**
@@ -211,5 +219,58 @@ public class GestionSportifs {
     Questionnaire questionnaire = listeQuestionnaires.getQuestionnaire(index);
     listeReponses.remove(questionnaire);
     return listeQuestionnaires.retirer(index);
+  }
+  
+  public static void genererWeb(Questionnaire quests) throws IOException {
+    int nbQuestion = quests.getTailleQuestionnaire();
+    String nomFichier;
+    String nomFichierprec;
+    new File("Questionnaire"+quests.getId()).mkdir(); 
+  
+    STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template/", '^','^');
+    ST index = g.getInstanceOf("accueil");
+    
+    
+    String dateDebut = quests.getDebut().getDay()+"/"+quests.getDebut().getMonth()+"/"+quests.getDebut().getYear();
+    String dateFin = quests.getFin().getDay()+"/"+quests.getFin().getMonth()+"/"+quests.getFin().getYear();
+    
+    index.add("quest_name", quests.getIntitule());
+    index.add("date_debut", dateDebut);
+    index.add("date_fin", dateFin);
+    
+    String result = index.render();
+    System.out.println(result);
+    
+    File accueilHTML = new File("html/Questionnaire"+quests.getId()+"+accueil.php");
+    FileUtils.writeStringToFile(accueilHTML, result, "UTF-8");
+    
+    for(int i = 1; i < nbQuestion; i++) {
+      ST quest = g.getInstanceOf("questionnaire");
+      
+      if(i==nbQuestion-1) {
+        nomFichier = "fin";
+      }
+      else {
+        nomFichier = "questionnaire"+(i+1);  
+      }
+      
+      if(i==1) {
+        nomFichierprec = "accueil";
+      }
+      else {
+        nomFichierprec = "questionnaire"+(i-1);
+      }
+      
+      quest.add("nomFichier", nomFichier);
+      quest.add("num", i);
+      quest.add("quest_name", quests.getIntitule());
+      quest.add("question", quests.getQuestion(i));
+      quest.add("prec", nomFichierprec);
+      result = quest.render();
+      System.out.println(result);
+      
+      File questionnaire = new File("html/Questionnaire"+quests.getId()+"/question"+i+".php");
+      FileUtils.writeStringToFile(questionnaire, result, "UTF-8");
+    }
   }
 }

@@ -11,7 +11,9 @@ public class generationWeb {
   @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
     
-      int nbQuestion = 3;
+      Questionnaire quests = GestionSportifs.getQuestionnaire(0);
+    
+      int nbQuestion = quests.getTailleQuestionnaire();
       String nomFichier;
       String nomFichierprec;
     
@@ -19,14 +21,18 @@ public class generationWeb {
       ST index = g.getInstanceOf("accueil");
       
       
-      index.add("quest_name", "Questionnaire d'initiation");
-      index.add("date_debut", "26/02/18");
-      index.add("date_fin", "04/03/18");
+      String dateDebut = quests.getDebut().getDay()+"/"+quests.getDebut().getMonth()+"/"+quests.getDebut().getYear();
+      String dateFin = quests.getFin().getDay()+"/"+quests.getFin().getMonth()+"/"+quests.getFin().getYear();
+      
+      index.add("quest_name", quests.getIntitule());
+      index.add("date_debut", dateDebut);
+      index.add("date_fin", dateFin);
+      
       String result = index.render();
       System.out.println(result);
       
       File accueilHTML = new File("html/accueil.php");
-      FileUtils.writeStringToFile(accueilHTML, result);
+      FileUtils.writeStringToFile(accueilHTML, result, "UTF-8");
       
       for(int i = 1; i < nbQuestion; i++) {
         ST quest = g.getInstanceOf("questionnaire");
@@ -47,14 +53,14 @@ public class generationWeb {
         
         quest.add("nomFichier", nomFichier);
         quest.add("num", i);
-        quest.add("quest_name", "Questionnaire d'initiation");
-        quest.add("question", "Vous allez bien ? ");
+        quest.add("quest_name", quests.getIntitule());
+        quest.add("question", quests.getQuestion(i));
         quest.add("prec", nomFichierprec);
         result = quest.render();
         System.out.println(result);
         
         File questionnaire = new File("html/questionnaire"+i+".php");
-        FileUtils.writeStringToFile(questionnaire, result);
+        FileUtils.writeStringToFile(questionnaire, result, "UTF-8");
       }
   }
 }
