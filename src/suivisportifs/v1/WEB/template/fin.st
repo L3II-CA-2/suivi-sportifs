@@ -1,3 +1,5 @@
+fin(quest_id) ::= <<
+
 <?php
 	session_start();
 	if(!isset($_SESSION['login'])){
@@ -21,7 +23,7 @@
 			$date = $today['year'].$today['mon'].$today['mday'];
 			$rpsid=$donnees+$key;
 			$bdd->exec('INSERT INTO t_reponse_rps VALUES ('.$value.')');
-			$bdd->exec('INSERT INTO t_reponse_sportif_questionnaire_rsq VALUES ('.$_SESSION['idlogin'].',1, '.$rpsid.', '.$date.')');
+			$bdd->exec('INSERT INTO t_reponse_sportif_questionnaire_rsq VALUES ('.$_SESSION['idlogin'].',^quest_id^, '.$rpsid.', '.$date.')');
 		}
   }
 	catch (Exception $e){
@@ -62,3 +64,4 @@
    </div>
  </body>
 </html>
+>>

@@ -228,7 +228,6 @@ public class GestionSportifs {
     int nbQuestion = quests.getTailleQuestionnaire();
     String nomFichier;
     String nomFichierprec;
-    new File("Questionnaire"+quests.getId()).mkdir(); 
   
     STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template/", '^','^');
     ST index = g.getInstanceOf("accueil");
@@ -244,7 +243,7 @@ public class GestionSportifs {
     String result = index.render();
     System.out.println(result);
     
-    File accueilHTML = new File("html/Questionnaire"+quests.getId()+"+accueil.php");
+    File accueilHTML = new File("html/accueil.php");
     FileUtils.writeStringToFile(accueilHTML, result, "UTF-8");
     
     for(int i = 1; i < nbQuestion; i++) {
@@ -272,8 +271,17 @@ public class GestionSportifs {
       result = quest.render();
       System.out.println(result);
       
-      File questionnaire = new File("html/Questionnaire"+quests.getId()+"/question"+i+".php");
+      File questionnaire = new File("html/question"+i+".php");
       FileUtils.writeStringToFile(questionnaire, result, "UTF-8");
     }
+    
+    ST fin = g.getInstanceOf("fin");
+    fin.add("quest_id", quests.getId());
+    result = fin.render();
+    System.out.println(result);
+    
+    File fichierFin = new File("html/fin.php");
+    FileUtils.writeStringToFile(fichierFin, result, "UTF-8");
+    
   }
 }
