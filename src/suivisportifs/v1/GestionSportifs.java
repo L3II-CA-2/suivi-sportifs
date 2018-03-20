@@ -114,7 +114,7 @@ public class GestionSportifs {
   }
   
   public static int addQuestionnaire(String intitule, Date debut, Date fin) {
-    listeQuestionnaires.ajouter(new Questionnaire(intitule, debut, fin));
+    listeQuestionnaires.ajouter(new Questionnaire(listeQuestionnaires.getListSize(), intitule, debut, fin));
     return listeQuestionnaires.getListSize() - 1;
   }
   
