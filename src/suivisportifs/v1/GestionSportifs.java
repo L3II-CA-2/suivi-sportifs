@@ -27,6 +27,7 @@ public class GestionSportifs {
   public static ListeQuestionnaires listeQuestionnaires = new ListeQuestionnaires();
   public static ListeSportifs listeSportifs = new ListeSportifs();
   public static ListeReponses listeReponses = new ListeReponses();
+  static Connection conn;
   
   public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {/*
     addSportif("boblegob", "bob", "legob", Sport.Tennis, new Date());
@@ -49,9 +50,10 @@ public class GestionSportifs {
     
     
     
-    String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
+    
     Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-    Connection conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
+    String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
+    conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
     Statement stm = conn.createStatement();
     String tousQuestionnaires= new String("SELECT qtr_id, qtr_intitue, qtr_date_debut qtr_date_fin FROM t_questionnaire_qtr;");
     ResultSet result = null;
