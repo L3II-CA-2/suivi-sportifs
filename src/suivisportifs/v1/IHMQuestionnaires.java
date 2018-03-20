@@ -61,5 +61,11 @@ public class IHMQuestionnaires extends JFrame implements ActionListener{
       IHMAjouterQuestionnaire questionnaire= new IHMAjouterQuestionnaire();
       questionnaire.setVisible(true);
       }
+    
+    if(e.getSource() == boutonSuprimerQuestionnaire) {
+      this.setVisible(false); 
+      IHMSuprimmerQuestionnaire questionnaire = new IHMSuprimmerQuestionnaire();
+      questionnaire.setVisible(true);
+      }
   }
 }

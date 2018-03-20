@@ -118,6 +118,8 @@ public class IHMAjouterSportif extends JFrame implements ActionListener {
       @SuppressWarnings("deprecation")
       Date date = new Date((dateA-1900),(dateM-1),dateJ);
       System.out.println(date.toString());
+      GestionSportifs.addSportif(Pseudo, nom, Prenom, sport, date);
+      
       this.setVisible(false); 
       Fenetre Sportif= new Fenetre();
       Sportif.setVisible(true);

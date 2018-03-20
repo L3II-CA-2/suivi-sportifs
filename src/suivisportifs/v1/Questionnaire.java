@@ -229,4 +229,10 @@ public class Questionnaire {
     }
   }
   
+  public String toString() {
+    return intitule;
+    
+    
+  }
+  
 }

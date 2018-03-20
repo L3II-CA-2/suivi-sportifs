@@ -13,8 +13,7 @@ public class Fenetre extends JFrame implements ActionListener{
   private JButton boutonSportifs = new JButton("Sportifs");
   private JButton boutonQuestionnaire = new JButton("Questionnaire");
   private JButton boutonSuivit = new JButton("Suivit");
-
-  
+  private JButton boutonCreerWeb = new JButton("Suivit");
   
   public Fenetre () {
     this.setTitle("Menu");
@@ -22,7 +21,7 @@ public class Fenetre extends JFrame implements ActionListener{
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
     
-
+    
     
     boutonQuestionnaire.addActionListener(this);
     pan.add(boutonQuestionnaire);
@@ -32,6 +31,9 @@ public class Fenetre extends JFrame implements ActionListener{
     
     boutonSportifs.addActionListener(this);
     pan.add(boutonSportifs);
+    
+    boutonCreerWeb.addActionListener(this);
+    pan.add(boutonCreerWeb);
     
     this.setContentPane(pan);
     this.setVisible(true);
@@ -49,10 +51,17 @@ public class Fenetre extends JFrame implements ActionListener{
     IHMSportifs Sportif= new IHMSportifs();
     Sportif.setVisible(true);
     }
+    
     if(e.getSource() == boutonQuestionnaire) {
       this.setVisible(false); 
       IHMQuestionnaires Questionnaire= new IHMQuestionnaires();
       Questionnaire.setVisible(true);
+      }
+    
+    if(e.getSource() == boutonCreerWeb) {
+      
+      
+      
       }
     
   }
