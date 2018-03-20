@@ -46,26 +46,26 @@ public class GestionSportifs {
     System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
     */
     
-    //Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-    String url = "jdbc:mariadb://obiwan2.univ-brest.fr:3306/zfl3-zpearceva";
-    conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
+    Class.forName ("org.mariadb.jdbc.Driver");
+    String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
+    conn = DriverManager.getConnection (url, "zpearceva", "ffa9kyky");
     Statement stm = conn.createStatement();
-    String tousQuestionnaires= new String("SELECT qtr_id, qtr_intitue, qtr_date_debut qtr_date_fin FROM t_questionnaire_qtr;");
+    String tousQuestionnaires= new String("SELECT qtr_id, qtr_intitule, qtr_date_debut, qtr_date_fin FROM t_questionnaire_qtr;");
     ResultSet result = null;
     // boolean returningRows = stm.execute(fullCommand); // renvoie un booleen qui dit si ça a renvoyé qqchose
     result = stm.executeQuery(tousQuestionnaires);
     while(result.next()) {
-      listeQuestionnaires.ajouter(new Questionnaire(result.getInt(0), result.getString(1), result.getDate(2), result.getDate(3)));
+      listeQuestionnaires.ajouter(new Questionnaire(result.getInt(1), result.getString(2), result.getDate(3), result.getDate(4)));
     }
-    String toutesQuestions = new String("SELECT qst_id, qst_intitule, qst_reponse_defaut, qtr_id from t_question_qst ORDER BY qst_id;");
+    String toutesQuestions = new String("SELECT qst_id, qst_intitule, qst_reponse_defaut, qtr_id from t_question_qst ORDER BY t_question_qst.qst_id;");
     result = stm.executeQuery(toutesQuestions);
     while(result.next()) {
       listeQuestionnaires.getQuestionnaire(result.getInt(3)).ajouterQuestion(new Question(result.getString(1), result.getBoolean(2)));
     }
-    String tousSportifs = new String("SELECT spf_pseudo, spf_nom, spf_prenom, Date_naissance, spf_actif, spr_id from t_sportifs_spf ORDER BY qst_id;");
+    String tousSportifs = new String("SELECT spf_pseudo, spf_nom, spf_prenom, Date_naissance, spf_actif, spr_id from t_sportifs_spf;");
     result = stm.executeQuery(tousSportifs);
     while(result.next()) {
-      addSportif(result.getString(0), result.getString(1), result.getString(2), Sport.getSportByInt(result.getInt(5)), result.getDate(3));
+      addSportif(result.getString(1), result.getString(2), result.getString(3), Sport.getSportByInt(result.getInt(6)), result.getDate(4));
     }
     
     Fenetre Sportif= new Fenetre();
