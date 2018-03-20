@@ -1,5 +1,3 @@
-questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
-
 <?php
 	session_start();
 	if(!isset($_SESSION['login'])){
@@ -7,8 +5,7 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
 	}
 
 	if(isset($_POST['submit'])){
-		$_SESSION['data'][^num^]=$_POST['reponse'];
-		header("Location:^nomFichier^.php");
+		header("Location:questionnaire1.php");
 	}
 
  ?>
@@ -29,27 +26,14 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
     <div class='container'>
       <article>
         <div class="formContainer" >
-          <form method="POST" target="">
-            <h2>^quest_name^</h2>
-            <h3>^question^</h3>
+          <form method="POST" target="accueil.php" >
+            <h2>Questionnaire d'initiation</h2>
+            <h3>Semaine du 26/02/18 au 04/03/18</h3>
 
-						<table>
-							<tr>
-								<td><input type="radio" name="reponse" id="reponse" value="oui" checked></td><td><h4>Oui</h4></td>
-							</tr>
-							<tr>
-								<td><input type="radio" name="reponse" id="reponse" value="non"></td><td><h4>Non</h4></td>
-							</tr>
-						</table>
-
- 						<br />
-
-						<button type="button" id="prec" onclick="location.href='^prec^.php';">Précedent</button>
-						<input type="submit" id="submit" name="submit" value="Suivant" />
+          <input type="submit" id="submit" name="submit" value="Commencer" />
           </form>
         </div>
       </article>
     </div>
 	</body>
 </html>
->>

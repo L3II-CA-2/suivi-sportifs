@@ -12,5 +12,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="jarsExternes/mariadb-java-client-2.2.3.jar"/>
+	<classpathentry kind="lib" path="jarsExternes/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="jarsExternes/ST-4.0.8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -102,7 +102,7 @@ public class IHMAjouterSportif extends JFrame implements ActionListener {
   }
 
 
-  @Override
+ 
   public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
     if(e.getSource() == boutonValider) {
@@ -111,9 +111,9 @@ public class IHMAjouterSportif extends JFrame implements ActionListener {
       String nom = champNom.getText();
       String Prenom = champNom.getText();
       Sport sport = Sport.valueOf(menuDeroulent.getSelectedItem().toString());
-      int dateJ =  (int) menuDeroulentDJ.getSelectedItem();
-      int dateM =  (int) menuDeroulentDM.getSelectedItem();
-      int dateA =  (int) menuDeroulentDA.getSelectedItem();
+      int dateJ =   (Integer) menuDeroulentDJ.getSelectedItem();
+      int dateM =  (Integer) menuDeroulentDM.getSelectedItem();
+      int dateA =  (Integer) menuDeroulentDA.getSelectedItem();
       System.out.println(sport.toString());
       @SuppressWarnings("deprecation")
       Date date = new Date((dateA-1900),(dateM-1),dateJ);

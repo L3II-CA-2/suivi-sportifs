@@ -1,5 +1,3 @@
-questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
-
 <?php
 	session_start();
 	if(!isset($_SESSION['login'])){
@@ -7,8 +5,8 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
 	}
 
 	if(isset($_POST['submit'])){
-		$_SESSION['data'][^num^]=$_POST['reponse'];
-		header("Location:^nomFichier^.php");
+		$_SESSION['data'][1]=$_POST['reponse'];
+		header("Location:questionnaire2.php");
 	}
 
  ?>
@@ -30,8 +28,8 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
       <article>
         <div class="formContainer" >
           <form method="POST" target="">
-            <h2>^quest_name^</h2>
-            <h3>^question^</h3>
+            <h2>Questionnaire d'initiation</h2>
+            <h3>Vous allez bien ? </h3>
 
 						<table>
 							<tr>
@@ -44,7 +42,7 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
 
  						<br />
 
-						<button type="button" id="prec" onclick="location.href='^prec^.php';">Précedent</button>
+						<button type="button" id="prec" onclick="location.href='accueil.php';">Précedent</button>
 						<input type="submit" id="submit" name="submit" value="Suivant" />
           </form>
         </div>
@@ -52,4 +50,3 @@ questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
     </div>
 	</body>
 </html>
->>
