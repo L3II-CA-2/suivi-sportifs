@@ -7,7 +7,7 @@ accueil(quest_name, date_debut, date_fin) ::= <<
 	}
 
 	if(isset($_POST['submit'])){
-		header("Location:questionnaire1.php");
+		header("Location:question0.php");
 	}
 
  ?>

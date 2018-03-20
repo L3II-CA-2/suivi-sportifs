@@ -244,27 +244,27 @@ public class GestionSportifs {
     File accueilHTML = new File("html/accueil.php");
     FileUtils.writeStringToFile(accueilHTML, result, "UTF-8");
     
-    for(int i = 1; i < nbQuestion; i++) {
+    for(int i = 0; i < nbQuestion; i++) {
       ST quest = g.getInstanceOf("questionnaire");
       
       if(i==nbQuestion-1) {
         nomFichier = "fin";
       }
       else {
-        nomFichier = "questionnaire"+(i+1);  
+        nomFichier = "question"+(i+1);  
       }
       
       if(i==1) {
         nomFichierprec = "accueil";
       }
       else {
-        nomFichierprec = "questionnaire"+(i-1);
+        nomFichierprec = "question"+(i-1);
       }
       
       quest.add("nomFichier", nomFichier);
       quest.add("num", i);
       quest.add("quest_name", quests.getIntitule());
-      quest.add("question", quests.getQuestion(i));
+      quest.add("question", quests.getQuestion(i).getIntitule());
       quest.add("prec", nomFichierprec);
       result = quest.render();
       System.out.println(result);
