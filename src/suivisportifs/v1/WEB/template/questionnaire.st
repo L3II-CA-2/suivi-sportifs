@@ -1,4 +1,4 @@
-questionnaire(quest_name, question, nomFichier, num) ::= <<
+questionnaire(quest_name, question, nomFichier, num, prec) ::= <<
 
 <?php
 	session_start();
@@ -44,7 +44,8 @@ questionnaire(quest_name, question, nomFichier, num) ::= <<
 
  						<br />
 
-            <input type="submit" id="submit" name="submit" value="Suivant">
+						<button type="button" id="prec" onclick="location.href='^prec^.php';">Précedent</button>
+						<input type="submit" id="submit" name="submit" value="Suivant" />
           </form>
         </div>
       </article>
