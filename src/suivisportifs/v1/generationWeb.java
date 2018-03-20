@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
-
+/*
 public class generationWeb {
   @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
@@ -67,4 +67,4 @@ public class generationWeb {
       File fichierFin = new File("html/fin.php");
       FileUtils.writeStringToFile(fichierFin, result, "UTF-8");
   }
-}
+}*/

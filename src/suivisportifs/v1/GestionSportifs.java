@@ -46,13 +46,8 @@ public class GestionSportifs {
     System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
     */
     
-    
-    
-    
-    
-    
-    Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-    String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
+    //Class.forName ("com.mysql.jdbc.Driver").newInstance ();
+    String url = "jdbc:mariadb://obiwan2.univ-brest.fr:3306/zfl3-zpearceva";
     conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
     Statement stm = conn.createStatement();
     String tousQuestionnaires= new String("SELECT qtr_id, qtr_intitue, qtr_date_debut qtr_date_fin FROM t_questionnaire_qtr;");
