@@ -69,7 +69,7 @@ public class GestionSportifs {
     String tousSportifs = new String("SELECT spf_pseudo, spf_nom, spf_prenom, Date_naissance, spf_actif, spr_id from t_sportifs_spf ORDER BY qst_id;");
     result = stm.executeQuery(tousSportifs);
     while(result.next()) {
-      listeSportifs.ajoutDansLaListe(result.getString(0), result.getString(1), result.getString(2), Sport.Null, result.getDate(3));
+      addSportif(result.getString(0), result.getString(1), result.getString(2), Sport.getSportByInt(result.getInt(5)), result.getDate(3));
     }
   }
   /**
