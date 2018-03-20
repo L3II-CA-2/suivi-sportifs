@@ -8,6 +8,7 @@ import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
 
 public class generationWeb {
+  @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
     
       Questionnaire quests = GestionSportifs.getQuestionnaire(0);
@@ -20,11 +21,13 @@ public class generationWeb {
       ST index = g.getInstanceOf("accueil");
       
       
+      String dateDebut = quests.getDebut().getDay()+"/"+quests.getDebut().getMonth()+"/"+quests.getDebut().getYear();
+      String dateFin = quests.getFin().getDay()+"/"+quests.getFin().getMonth()+"/"+quests.getFin().getYear();
       
+      index.add("quest_name", quests.getIntitule());
+      index.add("date_debut", dateDebut);
+      index.add("date_fin", dateFin);
       
-      index.add("quest_name", "Questionnaire d'initiation");
-      index.add("date_debut", "26/02/18");
-      index.add("date_fin", "04/03/18");
       String result = index.render();
       System.out.println(result);
       
@@ -50,8 +53,8 @@ public class generationWeb {
         
         quest.add("nomFichier", nomFichier);
         quest.add("num", i);
-        quest.add("quest_name", "Questionnaire d'initiation");
-        quest.add("question", "Vous allez bien ? ");
+        quest.add("quest_name", quests.getIntitule());
+        quest.add("question", quests.getQuestion(i));
         quest.add("prec", nomFichierprec);
         result = quest.render();
         System.out.println(result);

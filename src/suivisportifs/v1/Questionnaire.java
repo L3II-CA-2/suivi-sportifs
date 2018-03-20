@@ -39,6 +39,11 @@ public class Questionnaire {
   public int getTailleQuestionnaire() {
     return questions.size();
   }
+  
+  public Question getQuestion(int num) {
+    return questions.get(num);
+    
+  }
 
   /**
    * Modificateur de l'intitulé.
