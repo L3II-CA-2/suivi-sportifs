@@ -8,15 +8,18 @@ import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
 
 public class generationWeb {
-  @SuppressWarnings("deprecation")
   public static void main(String[] args) throws IOException {
     
-      int nbQuestion = 3;
+      Questionnaire quests = GestionSportifs.getQuestionnaire(0);
+    
+      int nbQuestion = quests.getTailleQuestionnaire();
       String nomFichier;
       String nomFichierprec;
     
       STGroup g = new STGroupDir("src/suivisportifs/v1/WEB/template/", '^','^');
       ST index = g.getInstanceOf("accueil");
+      
+      
       
       
       index.add("quest_name", "Questionnaire d'initiation");
@@ -26,7 +29,7 @@ public class generationWeb {
       System.out.println(result);
       
       File accueilHTML = new File("html/accueil.php");
-      FileUtils.writeStringToFile(accueilHTML, result);
+      FileUtils.writeStringToFile(accueilHTML, result, "UTF-8");
       
       for(int i = 1; i < nbQuestion; i++) {
         ST quest = g.getInstanceOf("questionnaire");
@@ -54,7 +57,7 @@ public class generationWeb {
         System.out.println(result);
         
         File questionnaire = new File("html/questionnaire"+i+".php");
-        FileUtils.writeStringToFile(questionnaire, result);
+        FileUtils.writeStringToFile(questionnaire, result, "UTF-8");
       }
   }
 }

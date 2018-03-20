@@ -35,6 +35,10 @@ public class Questionnaire {
   public String getIntitule() {
     return intitule;
   }
+  
+  public int getTailleQuestionnaire() {
+    return questions.size();
+  }
 
   /**
    * Modificateur de l'intitulé.
