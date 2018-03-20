@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
   
   private ArrayList<Question> questions = new ArrayList();
-  
+  private int nbQuestion = 0;
   
   private JPanel ligne1 = new JPanel();
   private JPanel ligne2 = new JPanel();
@@ -29,7 +29,7 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
   private JButton boutonRetour = new JButton("Retour");
   private JButton boutonValider = new JButton("Valider");
   
-  private JLabel labelnbQuestion = new JLabel("nbQuestion");
+  private JLabel labelnbQuestion = new JLabel("0");
   private JLabel labelIntitule = new JLabel("Intituler");
   private JLabel labelDateDebutJ = new JLabel("date de debut Jour JJ");
   private JLabel labelDateDebutM = new JLabel("date de debut Mois MM");
@@ -77,7 +77,7 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
       menuDeroulentFinM.addItem(i);
     }
     
-    for(int i = 1930; i<2010; i++) {
+    for(int i = 2017; i<2020; i++) {
       menuDeroulentDA.addItem(i);
       menuDeroulentFinA.addItem(i);
     }
@@ -113,6 +113,7 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
     
     boutonRetour.addActionListener(this);
     boutonValider.addActionListener(this);
+    Question.addActionListener(this);
     ligne5.add(boutonRetour);
     ligne5.add(boutonValider);
     
@@ -132,19 +133,45 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
  if(e.getSource() == Question) {
+   this.nbQuestion ++;
    String intituleQuestion = champQuestion.getText();
    boolean rep = checkReponse.isSelected();
    Question question = new Question(intituleQuestion, rep);
    questions.add(question);
+      labelnbQuestion.setText(""+nbQuestion);
       
-      
+      System.out.println(questions.toString());
       }
  
  
  if(e.getSource() == boutonValider) {
+   String intitule = champIntitule.getText();
+   int dateDJ =   (Integer) menuDeroulentDJ.getSelectedItem();
+   int dateDM =  (Integer) menuDeroulentDM.getSelectedItem();
+   int dateDA =  (Integer) menuDeroulentDA.getSelectedItem();
+   @SuppressWarnings("deprecation")
+   Date dateD = new Date((dateDA-1900),(dateDM-1),dateDJ);
+   int dateFJ =   (Integer) menuDeroulentFinJ.getSelectedItem();
+   int dateFM =  (Integer) menuDeroulentFinM.getSelectedItem();
+   int dateFA =  (Integer) menuDeroulentFinA.getSelectedItem();
+   @SuppressWarnings("deprecation")
+   Date dateF = new Date((dateFA-1900),(dateFM-1),dateFJ);
    
-   
+   /*Questionnaire questionnaire = new Questionnaire(nbQuestion, intitule, null, null);
+   questionnaire.setFin(dateF);
+   questionnaire.setDebut(dateD);
+   for (int i = 0 ; i< questions.size() ; i++) {
+     //System.out.println(questions.get(i));
+     questionnaire.ajouterQuestion(questions.get(i));
+   }*/
+   //System.out.println(questionnaire.toString());
    
  }
+ 
+ if(e.getSource() == boutonRetour) {
+   this.setVisible(false); 
+   Fenetre Sportif= new Fenetre();
+   Sportif.setVisible(true);
+   }
   } 
 }

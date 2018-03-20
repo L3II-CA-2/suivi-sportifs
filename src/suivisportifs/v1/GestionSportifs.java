@@ -36,6 +36,12 @@ public class GestionSportifs {
     System.out.println(listeSportifs.getListeSportifs().size());
     System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
     */
+    
+    Fenetre Sportif= new Fenetre();
+    Sportif.setVisible(true);
+    
+    
+    
     String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
     Class.forName ("com.mysql.jdbc.Driver").newInstance ();
     Connection conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
