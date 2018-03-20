@@ -156,7 +156,9 @@ public class IHMAjouterQuestionnaire extends JFrame implements ActionListener {
    int dateFA =  (Integer) menuDeroulentFinA.getSelectedItem();
    @SuppressWarnings("deprecation")
    Date dateF = new Date((dateFA-1900),(dateFM-1),dateFJ);
+   
    System.out.println(dateF.toString());
+   
    int indexQuestionnaire = GestionSportifs.addQuestionnaire(intitule, dateD, dateF);
    for (int i = 0 ; i< questions.size() ; i++) {
      

@@ -234,6 +234,7 @@ public class GestionSportifs {
     String dateDebut = quests.getDebut().getDay()+"/"+quests.getDebut().getMonth()+"/"+quests.getDebut().getYear();
     String dateFin = quests.getFin().getDay()+"/"+quests.getFin().getMonth()+"/"+quests.getFin().getYear();
     
+    System.out.println(dateDebut);
     index.add("quest_name", quests.getIntitule());
     index.add("date_debut", dateDebut);
     index.add("date_fin", dateFin);
