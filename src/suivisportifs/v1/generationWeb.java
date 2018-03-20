@@ -25,7 +25,7 @@ public class generationWeb {
       String result = index.render();
       System.out.println(result);
       
-      File accueilHTML = new File("/var/www/html/Suivis-sportifs/accueil.php");
+      File accueilHTML = new File("html/accueil.php");
       FileUtils.writeStringToFile(accueilHTML, result);
       
       for(int i = 1; i < nbQuestion; i++) {
@@ -53,7 +53,7 @@ public class generationWeb {
         result = quest.render();
         System.out.println(result);
         
-        File questionnaire = new File("/var/www/html/Suivis-sportifs/questionnaire"+i+".php");
+        File questionnaire = new File("html/questionnaire"+i+".php");
         FileUtils.writeStringToFile(questionnaire, result);
       }
   }
