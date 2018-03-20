@@ -45,8 +45,7 @@ public class GestionSportifs {
     System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
     */
     
-    Fenetre Sportif= new Fenetre();
-    Sportif.setVisible(true);
+    
     
     
     
@@ -71,6 +70,9 @@ public class GestionSportifs {
     while(result.next()) {
       addSportif(result.getString(0), result.getString(1), result.getString(2), Sport.getSportByInt(result.getInt(5)), result.getDate(3));
     }
+    
+    Fenetre Sportif= new Fenetre();
+    Sportif.setVisible(true);
   }
   /**
    * 
