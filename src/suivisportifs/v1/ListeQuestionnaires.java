@@ -5,6 +5,7 @@
 package suivisportifs.v1;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Gestion CRUD des Questionnaires.
@@ -18,7 +19,23 @@ public class ListeQuestionnaires {
   public ListeQuestionnaires() {
     this.listeQuestionnaires = new ArrayList<Questionnaire>();
   }
-  
+
+  /**
+   * Renvoie un questionnaire.
+   * @param index Index du questionnaire voulu
+   * @return Le questionnaire ou null si il n'existe pas
+   */ 
+  public Questionnaire getQuestionnaire(int i){
+    if (i < this.listeQuestionnaires.size()) {
+	return this.listeQuestionnaires.get(i);
+    } else {
+        return null;
+    }
+  }
+
+  public int getListSize() {
+    return this.listeQuestionnaires.size();
+  }
   /**
    * Ajoute un questionnaire.
    */
@@ -51,6 +68,32 @@ public class ListeQuestionnaires {
       return this.listeQuestionnaires.get(index).setIntitule(intitule);
     } else {
       return 2;
+    }
+  }
+
+  /**
+   * Permet de modifier la date de début d'un Questionnaire.
+   * @param index Index du questionnaire à modifier
+   * @param debut Nouvelle date de début du questionnaire
+   * @return Le valeur  de retour de setDebut si le Questionnaire existe, 4 sinon.  */
+  public int modifierDebutQuestionnaire(int index, Date debut) {
+    if (index >= 0 && index < this.listeQuestionnaires.size()) {
+      return this.listeQuestionnaires.get(index).setDebut(debut);
+    } else {
+      return 4;
+    }
+  }
+
+  /**
+   * Permet de modifier la date de fin d'un Questionnaire.
+   * @param index Index du questionnaire à modifier
+   * @param fin Nouvelle date de fin du questionnaire
+   * @return Le valeur  de retour de setFin si le Questionnaire existe, 4 sinon.  */
+  public int modifierFinQuestionnaire(int index, Date fin) {
+    if (index >= 0 && index < this.listeQuestionnaires.size()) {
+      return this.listeQuestionnaires.get(index).setFin(fin);
+    } else {
+      return 4;
     }
   }
 }

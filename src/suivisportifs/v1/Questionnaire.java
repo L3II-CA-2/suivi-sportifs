@@ -14,19 +14,24 @@ import java.util.GregorianCalendar;
  *
  */
 public class Questionnaire {
-
+  private int id;
   private String intitule;
   private Date debut;
   private Date fin;
   private ArrayList<Question> questions;
 
-  public Questionnaire(String intitule, Date debut, Date fin) {
+  public Questionnaire(int id, String intitule, Date debut, Date fin) {
+    this.id = id;
     this.intitule = intitule;
     this.debut = debut;
     this.fin = fin;
     this.questions = new ArrayList<Question>();
   }
 
+  public int getId(){
+    return this.id;
+  }
+  
   public String getIntitule() {
     return intitule;
   }

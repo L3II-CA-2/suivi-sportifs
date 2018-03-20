@@ -1,0 +1,30 @@
+
+@keyframes links{
+    from {color: #586e75;}
+    to {color: #cb4b16;}
+}
+
+html {
+  background-color : #fdf6e3;
+  color : #657b83;
+}
+.highlight{
+  background-color : #eee8d5;
+}
+a {
+  color : #586e75;
+}
+
+a:hover{
+  animation-name: links;
+  animation-duration: .5s;
+  color : #cb4b16;
+}
+
+.dropbtn {
+  color : #fdf6e3;
+  background-color : #656e75;
+}
+.dropdown:hover .dropbtn {
+    background-color: #656e75;
+}
