@@ -1,5 +1,10 @@
 package suivisportifs.v1;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -15,7 +20,7 @@ public class GestionSportifs {
   public static ListeSportifs listeSportifs = new ListeSportifs();
   public static ListeReponses listeReponses = new ListeReponses();
   
-  public static void main(String[] args) {/*
+  public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {/*
     addSportif("boblegob", "bob", "legob", Sport.Tennis, new Date());
     addSportif("arnold", "jean", "Madec", Sport.Football, new Date());
     addSportif("Kemar", "Marc", "Lagadec", Sport.Football, new Date());
@@ -31,6 +36,27 @@ public class GestionSportifs {
     System.out.println(listeSportifs.getListeSportifs().size());
     System.out.println(getReponses(getSportif("Kemar"), getQuestionnaire(index)));
     */
+    String url = "jdbc:mariadb://obiwan2.univ-brest.fr/zfl3-zpearceva";
+    Class.forName ("com.mysql.jdbc.Driver").newInstance ();
+    Connection conn = DriverManager.getConnection (url, "zpearceva ", "ffa9kyky");
+    Statement stm = conn.createStatement();
+    String tousQuestionnaires= new String("SELECT qtr_id, qtr_intitue, qtr_date_debut qtr_date_fin FROM t_questionnaire_qtr;");
+    ResultSet result = null;
+    // boolean returningRows = stm.execute(fullCommand); // renvoie un booleen qui dit si ça a renvoyé qqchose
+    result = stm.executeQuery(tousQuestionnaires);
+    while(result.next()) {
+      listeQuestionnaires.ajouter(new Questionnaire(result.getInt(0), result.getString(1), result.getDate(2), result.getDate(3)));
+    }
+    String toutesQuestions = new String("SELECT qst_id, qst_intitule, qst_reponse_defaut, qtr_id from t_question_qst ORDER BY qst_id;");
+    result = stm.executeQuery(toutesQuestions);
+    while(result.next()) {
+      listeQuestionnaires.getQuestionnaire(result.getInt(3)).ajouterQuestion(new Question(result.getString(1), result.getBoolean(2)));
+    }
+    String tousSportifs = new String("SELECT spf_pseudo, spf_nom, spf_prenom, Date_naissance, spf_actif, spr_id from t_sportifs_spf ORDER BY qst_id;");
+    result = stm.executeQuery(tousSportifs);
+    while(result.next()) {
+      listeSportifs.ajoutDansLaListe(result.getString(0), result.getString(1), result.getString(2), Sport.Null, result.getDate(3));
+    }
   }
   /**
    * 
