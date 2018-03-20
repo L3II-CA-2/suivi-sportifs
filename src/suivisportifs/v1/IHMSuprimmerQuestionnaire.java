@@ -3,6 +3,9 @@ package suivisportifs.v1;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -54,6 +57,24 @@ public class IHMSuprimmerQuestionnaire extends JFrame implements ActionListener 
       for(int i = 0; i<GestionSportifs.listeQuestionnaires.getListSize(); i++) {
         if(questionnaire == GestionSportifs.listeQuestionnaires.getQuestionnaire(i)) {
           GestionSportifs.removeQuestionnaire(i);
+          
+          Statement stm = null;
+          try {
+            stm = GestionSportifs.conn.createStatement();
+          } catch (SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }        
+           String tousQuestionnaires= new String("DELETE FROM t_questionnaire_qtr WHERE qtr_id="+(GestionSportifs.getQuestionnaire(i).getId()-1)+ ";");
+           ResultSet result = null;
+           // boolean returningRows = stm.execute(fullCommand); // renvoie un booleen qui dit si ça a renvoyé qqchose
+           try {
+            result = stm.executeQuery(tousQuestionnaires);
+          } catch (SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
+          
           break;
         }
       }
